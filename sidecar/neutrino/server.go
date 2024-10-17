@@ -1,11 +1,11 @@
-package neutrino_sidecar
+package neutrino
 
 //
 //import (
 //	"context"
 //	"fmt"
 //	"github.com/lightninglabs/neutrino"
-//	"github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
+//	"github.com/Zenrock-Foundation/zrchain/v4/sidecar/proto/api"
 //	"google.golang.org/grpc"
 //	"log"
 //	"net"

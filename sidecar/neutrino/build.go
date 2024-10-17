@@ -1,4 +1,4 @@
-package neutrino_sidecar
+package neutrino
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
+	"github.com/Zenrock-Foundation/zrchain/v4/sidecar/proto/api"
 
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"

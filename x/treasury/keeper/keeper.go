@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	sdkmath "cosmossdk.io/math"
-	"github.com/Zenrock-Foundation/zrchain/shared/v4"
 	"github.com/Zenrock-Foundation/zrchain/v4/app/params"
+	shared "github.com/Zenrock-Foundation/zrchain/v4/shared"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
 	"cosmossdk.io/collections"

@@ -15,7 +15,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	sidecar "github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
+	sidecar "github.com/Zenrock-Foundation/zrchain/v4/sidecar/proto/api"
 	"github.com/Zenrock-Foundation/zrchain/v4/app/params"
 	treasury "github.com/Zenrock-Foundation/zrchain/v4/x/treasury/keeper"
 	treasurytypes "github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"

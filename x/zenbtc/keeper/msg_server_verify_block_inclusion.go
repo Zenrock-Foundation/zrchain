@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	// "net/rpc"
-	// "github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
+	// "github.com/Zenrock-Foundation/zrchain/v4/sidecar/proto/api"
 	// "github.com/btcsuite/btcd/chaincfg/chainhash"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"

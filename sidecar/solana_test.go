@@ -1,4 +1,4 @@
-package main_test
+package sidecar_test
 
 import (
 	"context"
@@ -7,8 +7,8 @@ import (
 	"log"
 	"testing"
 
-	sidecar "github.com/Zenrock-Foundation/zrchain/sidecar"
-	"github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
+	sidecar "github.com/Zenrock-Foundation/zrchain/v4/sidecar"
+	"github.com/Zenrock-Foundation/zrchain/v4/sidecar/proto/api"
 	"github.com/stretchr/testify/require"
 
 	"github.com/near/borsh-go"

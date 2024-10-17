@@ -1,4 +1,4 @@
-package main
+package sidecar
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	"math/big"
 	"net"
 
-	"github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
+	"github.com/Zenrock-Foundation/zrchain/v4/sidecar/proto/api"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gagliardetto/solana-go"
 	"github.com/gagliardetto/solana-go/rpc"

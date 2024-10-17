@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/Zenrock-Foundation/zrchain/shared/v4"
+	shared "github.com/Zenrock-Foundation/zrchain/v4/shared"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"

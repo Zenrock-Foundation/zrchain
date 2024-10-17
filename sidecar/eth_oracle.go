@@ -1,4 +1,4 @@
-package main
+package sidecar
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 	"math/big"
 	"time"
 
-	neutrino "github.com/Zenrock-Foundation/zrchain/sidecar/neutrino"
+	neutrino "github.com/Zenrock-Foundation/zrchain/v4/sidecar/neutrino"
 	aggregatorv3 "github.com/smartcontractkit/chainlink/v2/core/gethwrappers/generated/aggregator_v3_interface"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"

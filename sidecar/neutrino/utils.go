@@ -1,4 +1,4 @@
-package neutrino_sidecar
+package neutrino
 
 //
 //import (

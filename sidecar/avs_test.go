@@ -1,4 +1,4 @@
-package main_test
+package sidecar_test
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	sidecar "github.com/Zenrock-Foundation/zrchain/sidecar"
+	sidecar "github.com/Zenrock-Foundation/zrchain/v4/sidecar"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
