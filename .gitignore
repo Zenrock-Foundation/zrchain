@@ -1,0 +1,15 @@
+release/
+.idea/
+.vscode/
+.DS_Store
+*.dot
+*.log
+*.ign
+*.out
+build/
+
+scripts/bootstrap/**
+react
+ts-client
+cmd/zenrockd/zenrockd*
+!scripts/bootstrap/main.sh
