@@ -1,9 +1,9 @@
 package keeper
 
 import (
+	v1 "github.com/Zenrock-Foundation/zrchain/v4/x/policy/migrations/v1"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	v1 "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/migrations/v1"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 type Migrator struct {

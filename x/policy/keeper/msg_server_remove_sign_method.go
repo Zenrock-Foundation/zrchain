@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func (k msgServer) RemoveSignMethod(goCtx context.Context, msg *types.MsgRemoveSignMethod) (*types.MsgRemoveSignMethodResponse, error) {

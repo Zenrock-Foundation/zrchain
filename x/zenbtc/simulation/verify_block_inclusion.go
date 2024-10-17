@@ -3,11 +3,11 @@ package simulation
 import (
 	"math/rand"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
 )
 
 func SimulateMsgVerifyDepositBlockInclusion(

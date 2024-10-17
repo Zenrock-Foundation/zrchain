@@ -2,9 +2,9 @@ package types
 
 import (
 	errorsmod "cosmossdk.io/errors"
+	identitytypes "github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	identitytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
 )
 
 var _ sdk.Msg = &MsgTransferFromKeyring{}

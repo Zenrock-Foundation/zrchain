@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/stretchr/testify/require"
-	"github.com/zenrocklabs/zenrock/avs/validator_sidecar/proto/api"
 )
 
 func Test_VerifyBTCUnlockTransaction(t *testing.T) {

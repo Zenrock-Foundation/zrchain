@@ -3,9 +3,9 @@ package keeper
 import (
 	"context"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/policy"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/policy"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func (k msgServer) NewPolicy(goCtx context.Context, msg *types.MsgNewPolicy) (*types.MsgNewPolicyResponse, error) {

@@ -3,8 +3,8 @@ package keeper
 import (
 	"context"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

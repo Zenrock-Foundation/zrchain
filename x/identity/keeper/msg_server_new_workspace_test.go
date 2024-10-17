@@ -4,12 +4,12 @@ import (
 	"reflect"
 	"testing"
 
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
+	pol "github.com/Zenrock-Foundation/zrchain/v4/x/policy/module"
+	policytypes "github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	"github.com/stretchr/testify/require"
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
-	pol "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/module"
-	policytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func Test_msgServer_NewWorkspace(t *testing.T) {

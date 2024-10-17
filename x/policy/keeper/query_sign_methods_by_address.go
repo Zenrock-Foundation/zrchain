@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"cosmossdk.io/collections"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

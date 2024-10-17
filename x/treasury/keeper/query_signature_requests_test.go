@@ -3,11 +3,11 @@ package keeper_test
 import (
 	"testing"
 
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	treasury "github.com/Zenrock-Foundation/zrchain/v4/x/treasury/module"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 	"github.com/stretchr/testify/require"
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	treasury "github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/module"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/types"
 )
 
 func TestKeeper_SignRequest(t *testing.T) {

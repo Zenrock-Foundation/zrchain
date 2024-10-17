@@ -3,9 +3,9 @@ package keeper
 import (
 	"context"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	authztypes "github.com/cosmos/cosmos-sdk/x/authz"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func (k msgServer) AddMultiGrant(goCtx context.Context, msg *types.MsgAddMultiGrant) (*types.MsgAddMultiGrantResponse, error) {

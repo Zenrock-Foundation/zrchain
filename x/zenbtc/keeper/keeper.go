@@ -9,9 +9,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	treasury "github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/keeper"
-	validation "github.com/zenrocklabs/zenrock/zrchain/v4/x/validation/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
+	treasury "github.com/Zenrock-Foundation/zrchain/v4/x/treasury/keeper"
+	validation "github.com/Zenrock-Foundation/zrchain/v4/x/validation/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 )
 
 type (

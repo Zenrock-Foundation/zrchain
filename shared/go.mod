@@ -1,4 +1,4 @@
-module github.com/zenrocklabs/zenrock/zrchain/shared/v4
+module github.com/Zenrock-Foundation/zrchain/shared/v4
 
 go 1.23.2
 

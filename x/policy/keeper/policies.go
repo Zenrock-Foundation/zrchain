@@ -7,8 +7,8 @@ import (
 	"slices"
 
 	"cosmossdk.io/collections"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func (k Keeper) CreatePolicy(ctx sdk.Context, policy *types.Policy) (uint64, error) {

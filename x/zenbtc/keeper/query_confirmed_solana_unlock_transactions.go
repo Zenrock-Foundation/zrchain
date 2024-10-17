@@ -8,8 +8,8 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	validationtypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/validation/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
+	validationtypes "github.com/Zenrock-Foundation/zrchain/v4/x/validation/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 )
 
 func (k Keeper) ConfirmedSolanaUnlockTransactions(goCtx context.Context, req *types.QueryConfirmedSolanaUnlockTransactionsRequest) (*types.QueryConfirmedSolanaUnlockTransactionsResponse, error) {

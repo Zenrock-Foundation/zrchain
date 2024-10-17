@@ -26,9 +26,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	sidecar "github.com/zenrocklabs/zenrock/avs/validator_sidecar/proto/api"
-	treasurytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/validation/types"
+	sidecar "github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
+	treasurytypes "github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/validation/types"
 )
 
 func (k Keeper) GetSidecarState(ctx context.Context, height int64) (*OracleData, error) {

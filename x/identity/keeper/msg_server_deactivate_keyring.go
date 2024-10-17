@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	errorsmod "cosmossdk.io/errors"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
 )
 
 func (k msgServer) DeactivateKeyring(goCtx context.Context, msg *types.MsgDeactivateKeyring) (*types.MsgDeactivateKeyringResponse, error) {

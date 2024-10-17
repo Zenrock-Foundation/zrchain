@@ -4,11 +4,11 @@ import (
 	"reflect"
 	"testing"
 
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/keeper"
+	identity "github.com/Zenrock-Foundation/zrchain/v4/x/identity/module"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 	"github.com/stretchr/testify/require"
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/keeper"
-	identity "github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/module"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
 )
 
 func Test_msgServer_AddKeyringParty(t *testing.T) {

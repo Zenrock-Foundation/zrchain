@@ -3,10 +3,10 @@ package types
 import (
 	"context"
 
-	policykeeper "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/keeper"
+	policykeeper "github.com/Zenrock-Foundation/zrchain/v4/x/policy/keeper"
 
+	idtypes "github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	idtypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
 )
 
 // AccountKeeper defines the expected interface for the Account module.

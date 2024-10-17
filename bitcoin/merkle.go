@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/zenrocklabs/zenrock/avs/validator_sidecar/proto/api"
 )
 
 func VerifyBTCLockTransaction(rawTX string, chainName string, index int, proof []string, blockHeader *api.BTCBlockHeader) ([]TXOutputs, string, error) {

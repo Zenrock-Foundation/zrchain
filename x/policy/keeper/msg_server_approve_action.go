@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func (k msgServer) ApproveAction(goCtx context.Context, msg *types.MsgApproveAction) (*types.MsgApproveActionResponse, error) {

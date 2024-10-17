@@ -1,4 +1,4 @@
-module github.com/zenrocklabs/zenrock/zrchain/v4
+module github.com/Zenrock-Foundation/zrchain/v4
 
 go 1.23.2
 
@@ -10,9 +10,8 @@ replace (
 	github.com/gin-gonic/gin => github.com/gin-gonic/gin v1.7.0
 	// replace broken goleveldb
 	github.com/syndtr/goleveldb => github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7
-	github.com/zenrocklabs/zenrock/avs/basic_contract => ../avs/basic_contract
-	github.com/zenrocklabs/zenrock/avs/validator_sidecar/proto/api => ../avs/validator_sidecar/proto/api
-	github.com/zenrocklabs/zenrock/zrchain/shared/v4 => ./shared
+	github.com/Zenrock-Foundation/zrchain/sidecar/proto/api => ./sidecar/proto/api
+	github.com/Zenrock-Foundation/zrchain/shared/v4 => ./shared
 )
 
 require (
@@ -63,8 +62,8 @@ require (
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
 	github.com/stretchr/testify v1.9.0
-	github.com/zenrocklabs/zenrock/avs/validator_sidecar/proto/api v1.1.3
-	github.com/zenrocklabs/zenrock/zrchain/shared/v4 v4.3.0
+	github.com/Zenrock-Foundation/zrchain/sidecar/proto/api v1.1.3
+	github.com/Zenrock-Foundation/zrchain/shared/v4 v4.3.0
 	golang.org/x/exp v0.0.0-20240904232852-e7e105dedf7e
 	golang.org/x/tools v0.24.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20240903143218-8af14fe29dc1

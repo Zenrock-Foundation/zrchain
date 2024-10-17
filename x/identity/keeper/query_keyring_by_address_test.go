@@ -4,9 +4,9 @@ import (
 	"reflect"
 	"testing"
 
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	identity "github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/module"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	identity "github.com/Zenrock-Foundation/zrchain/v4/x/identity/module"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 )
 
 func TestKeeper_KeyringByAddress(t *testing.T) {

@@ -3,9 +3,9 @@ package types
 import (
 	"testing"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/testutil/sample"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/stretchr/testify/require"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/testutil/sample"
 )
 
 func TestMsgNewICATransactionRequest_ValidateBasic(t *testing.T) {

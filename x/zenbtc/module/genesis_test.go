@@ -3,11 +3,11 @@ package zenbtc_test
 import (
 	"testing"
 
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/testutil/nullify"
+	zenbtc "github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/module"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 	"github.com/stretchr/testify/require"
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/testutil/nullify"
-	zenbtc "github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/module"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
 )
 
 func TestGenesis(t *testing.T) {

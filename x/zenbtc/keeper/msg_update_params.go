@@ -6,7 +6,7 @@ import (
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 )
 
 func (k msgServer) UpdateParams(goCtx context.Context, req *types.MsgUpdateParams) (*types.MsgUpdateParamsResponse, error) {

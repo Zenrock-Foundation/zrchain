@@ -3,8 +3,8 @@ package types
 import (
 	"testing"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/testutil/sample"
 	"github.com/stretchr/testify/require"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/testutil/sample"
 )
 
 func TestBoolparserPolicy_Validate(t *testing.T) {

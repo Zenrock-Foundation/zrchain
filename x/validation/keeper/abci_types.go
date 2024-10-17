@@ -6,10 +6,10 @@ import (
 	"math/big"
 
 	"cosmossdk.io/math"
+	sidecar "github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
 	abci "github.com/cometbft/cometbft/abci/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
-	sidecar "github.com/zenrocklabs/zenrock/avs/validator_sidecar/proto/api"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

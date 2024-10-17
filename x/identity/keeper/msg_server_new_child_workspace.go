@@ -4,11 +4,11 @@ import (
 	"context"
 
 	errorsmod "cosmossdk.io/errors"
-	pol "github.com/zenrocklabs/zenrock/zrchain/v4/policy"
-	policykeeper "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/keeper"
-	policytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
+	pol "github.com/Zenrock-Foundation/zrchain/v4/policy"
+	policykeeper "github.com/Zenrock-Foundation/zrchain/v4/x/policy/keeper"
+	policytypes "github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

@@ -4,8 +4,8 @@ import (
 	"context"
 
 	errorsmod "cosmossdk.io/errors"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
 )
 
 func (k msgServer) RemoveKeyringAdmin(goCtx context.Context, msg *types.MsgRemoveKeyringAdmin) (*types.MsgRemoveKeyringAdminResponse, error) {

@@ -3,8 +3,8 @@ package keeper
 import (
 	"crypto/sha256"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 type PolicyDataProvider interface {

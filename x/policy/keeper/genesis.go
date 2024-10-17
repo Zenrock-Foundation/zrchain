@@ -1,8 +1,8 @@
 package keeper
 
 import (
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func (k *Keeper) ExportState(ctx sdk.Context, genState *types.GenesisState) error {

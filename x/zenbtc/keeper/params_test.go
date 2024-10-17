@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 )
 
 func TestGetParams(t *testing.T) {

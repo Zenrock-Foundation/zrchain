@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/types"
 )
 
 func (k msgServer) FulfilICATransactionRequest(goCtx context.Context, msg *types.MsgFulfilICATransactionRequest) (*types.MsgFulfilICATransactionRequestResponse, error) {

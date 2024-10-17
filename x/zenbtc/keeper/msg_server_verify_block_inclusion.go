@@ -5,14 +5,14 @@ import (
 	"errors"
 
 	// "net/rpc"
-	// "github.com/zenrocklabs/zenrock/avs/validator_sidecar/proto/api"
+	// "github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
 	// "github.com/btcsuite/btcd/chaincfg/chainhash"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/zenrocklabs/zenrock/zrchain/v4/bitcoin"
-	treasurytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/bitcoin"
+	treasurytypes "github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 )
 
 func (k msgServer) VerifyDepositBlockInclusion(goCtx context.Context, msg *types.MsgVerifyDepositBlockInclusion) (*types.MsgVerifyDepositBlockInclusionResponse, error) {

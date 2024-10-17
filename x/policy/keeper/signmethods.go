@@ -2,9 +2,9 @@ package keeper
 
 import (
 	"cosmossdk.io/collections"
+	policytypes "github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	policytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func (k Keeper) SetSignMethod(ctx sdk.Context, owner string, id string, signMethod policytypes.SignMethod) error {

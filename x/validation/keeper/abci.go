@@ -11,14 +11,14 @@ import (
 
 	"cosmossdk.io/collections"
 	"cosmossdk.io/math"
+	sidecar "github.com/Zenrock-Foundation/zrchain/sidecar/proto/api"
+	treasurytypes "github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/validation/types"
 	abci "github.com/cometbft/cometbft/abci/types"
 	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	sidecar "github.com/zenrocklabs/zenrock/avs/validator_sidecar/proto/api"
-	treasurytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/validation/types"
 )
 
 func (k *Keeper) BeginBlocker(ctx context.Context) error {

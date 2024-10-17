@@ -26,16 +26,16 @@ from amino import amino_pb2 as amino_dot_amino__pb2
 from gogoproto import gogo_pb2 as gogoproto_dot_gogo__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dzrchain/identity/params.proto\x12\x10zrchain.identity\x1a\x11\x61mino/amino.proto\x1a\x14gogoproto/gogo.proto\"\x80\x01\n\x06Params\x12\x30\n\x14keyring_creation_fee\x18\x01 \x01(\x04R\x12keyringCreationFee:D\xe8\xa0\x1f\x01\x8a\xe7\xb0*;github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/ParamsB<Z:github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dzrchain/identity/params.proto\x12\x10zrchain.identity\x1a\x11\x61mino/amino.proto\x1a\x14gogoproto/gogo.proto\"\x80\x01\n\x06Params\x12\x30\n\x14keyring_creation_fee\x18\x01 \x01(\x04R\x12keyringCreationFee:D\xe8\xa0\x1f\x01\x8a\xe7\xb0*;github.com/Zenrock-Foundation/zrchain/v4/x/identity/ParamsB<Z:github.com/Zenrock-Foundation/zrchain/v4/x/identity/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'zrchain.identity.params_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z:github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types'
+  _globals['DESCRIPTOR']._serialized_options = b'Z:github.com/Zenrock-Foundation/zrchain/v4/x/identity/types'
   _globals['_PARAMS']._loaded_options = None
-  _globals['_PARAMS']._serialized_options = b'\350\240\037\001\212\347\260*;github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/Params'
+  _globals['_PARAMS']._serialized_options = b'\350\240\037\001\212\347\260*;github.com/Zenrock-Foundation/zrchain/v4/x/identity/Params'
   _globals['_PARAMS']._serialized_start=93
   _globals['_PARAMS']._serialized_end=221
 # @@protoc_insertion_point(module_scope)

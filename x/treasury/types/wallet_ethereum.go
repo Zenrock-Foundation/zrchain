@@ -7,12 +7,12 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/Zenrock-Foundation/zrchain/shared/v4"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/zenrocklabs/zenrock/zrchain/shared/v4"
 )
 
 type EthereumWallet struct {

@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/runtime"
 
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 )
 
 // GetParams get all parameters as types.Params

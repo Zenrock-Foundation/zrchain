@@ -5,11 +5,11 @@ import (
 	"fmt"
 
 	errorsmod "cosmossdk.io/errors"
+	pol "github.com/Zenrock-Foundation/zrchain/v4/policy"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
+	policy "github.com/Zenrock-Foundation/zrchain/v4/x/policy/keeper"
+	policytypes "github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	pol "github.com/zenrocklabs/zenrock/zrchain/v4/policy"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
-	policy "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/keeper"
-	policytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func (k msgServer) UpdateWorkspace(goCtx context.Context, msg *types.MsgUpdateWorkspace) (*types.MsgUpdateWorkspaceResponse, error) {

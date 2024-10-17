@@ -4,12 +4,12 @@ import (
 	"encoding/base64"
 	"testing"
 
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func Test_SignMethodsByAddress(t *testing.T) {

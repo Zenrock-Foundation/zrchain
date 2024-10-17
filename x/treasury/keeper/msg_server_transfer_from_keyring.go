@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	"cosmossdk.io/math"
+	"github.com/Zenrock-Foundation/zrchain/v4/app/params"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/app/params"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/types"
 )
 
 func (k msgServer) TransferFromKeyring(goCtx context.Context, msg *types.MsgTransferFromKeyring) (*types.MsgTransferFromKeyringResponse, error) {

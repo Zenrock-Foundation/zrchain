@@ -3,8 +3,8 @@ package keeper
 import (
 	"context"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	authztypes "github.com/cosmos/cosmos-sdk/x/authz"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func (k msgServer) RemoveMultiGrant(goCtx context.Context, msg *types.MsgRemoveMultiGrant) (*types.MsgRemoveMultiGrantResponse, error) {

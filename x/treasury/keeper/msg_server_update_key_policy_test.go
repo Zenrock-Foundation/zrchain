@@ -3,17 +3,17 @@ package keeper_test
 import (
 	"testing"
 
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/treasury/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"
 	"github.com/stretchr/testify/require"
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/types"
 	"gotest.tools/v3/assert"
 
-	identity "github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/module"
-	idtypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
-	policymodule "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/module"
-	policytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
-	treasurymodule "github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/module"
+	identity "github.com/Zenrock-Foundation/zrchain/v4/x/identity/module"
+	idtypes "github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
+	policymodule "github.com/Zenrock-Foundation/zrchain/v4/x/policy/module"
+	policytypes "github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
+	treasurymodule "github.com/Zenrock-Foundation/zrchain/v4/x/treasury/module"
 )
 
 func Test_msgServer_UpdateKeyPolicy(t *testing.T) {

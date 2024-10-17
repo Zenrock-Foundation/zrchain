@@ -4,9 +4,9 @@ import (
 	"reflect"
 	"testing"
 
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 )
 
 func TestKeeper_WorkspaceByAddress(t *testing.T) {

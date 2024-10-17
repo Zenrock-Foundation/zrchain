@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
+	validationtypes "github.com/Zenrock-Foundation/zrchain/v4/x/validation/types"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	validationtypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/validation/types"
 )
 
 // NewGenesisState creates a new GenesisState object

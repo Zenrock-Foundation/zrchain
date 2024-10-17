@@ -3,7 +3,7 @@ package types_test
 import (
 	"testing"
 
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 
 	"github.com/stretchr/testify/require"
 )

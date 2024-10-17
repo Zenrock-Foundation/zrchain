@@ -1,11 +1,11 @@
 package types
 
 import (
+	"github.com/Zenrock-Foundation/zrchain/v4/policy"
 	"github.com/cosmos/cosmos-sdk/codec"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/msgservice"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/policy"
 	// this line is used by starport scaffolding # 1
 )
 

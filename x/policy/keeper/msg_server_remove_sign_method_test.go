@@ -4,12 +4,12 @@ import (
 	"encoding/base64"
 	"testing"
 
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/keeper"
+	policy "github.com/Zenrock-Foundation/zrchain/v4/x/policy/module"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/stretchr/testify/assert"
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/keeper"
-	policy "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/module"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func Test_msgServer_RemoveSignMethod(t *testing.T) {

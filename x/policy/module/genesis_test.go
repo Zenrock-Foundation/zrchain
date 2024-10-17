@@ -3,11 +3,11 @@ package policy_test
 import (
 	"testing"
 
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/testutil/nullify"
+	policy "github.com/Zenrock-Foundation/zrchain/v4/x/policy/module"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	"github.com/stretchr/testify/require"
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/testutil/nullify"
-	policy "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/module"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func TestGenesis(t *testing.T) {

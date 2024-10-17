@@ -1,9 +1,9 @@
 package types
 
 import (
+	"github.com/Zenrock-Foundation/zrchain/v4/policy"
 	"github.com/cosmos/cosmos-sdk/codec"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/policy"
 )
 
 func NewPolicyResponse(cdc codec.BinaryCodec, policyPb *Policy) (*PolicyResponse, error) {

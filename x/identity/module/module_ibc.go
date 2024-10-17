@@ -3,8 +3,8 @@ package identity
 import (
 	"fmt"
 
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"

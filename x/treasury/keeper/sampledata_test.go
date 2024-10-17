@@ -1,8 +1,8 @@
 package keeper_test
 
 import (
+	policytypes "github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
-	policytypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 var boolPol1, _ = codectypes.NewAnyWithValue(&policytypes.BoolparserPolicy{

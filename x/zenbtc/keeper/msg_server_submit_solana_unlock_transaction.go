@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
+	validationtypes "github.com/Zenrock-Foundation/zrchain/v4/x/validation/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	validationtypes "github.com/zenrocklabs/zenrock/zrchain/v4/x/validation/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
 )
 
 func (k msgServer) SubmitSolanaUnlockTransaction(goCtx context.Context, msg *types.MsgSubmitSolanaUnlockTransaction) (*types.MsgSubmitSolanaUnlockTransactionResponse, error) {

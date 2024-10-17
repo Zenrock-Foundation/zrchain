@@ -1,0 +1,4 @@
+config.yaml
+__debug*
+*.abi
+*.bin

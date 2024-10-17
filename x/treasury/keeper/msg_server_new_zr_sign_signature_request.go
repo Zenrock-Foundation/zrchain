@@ -11,8 +11,8 @@ import (
 	cosmos_types "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/types"
 )
 
 func (k msgServer) NewZrSignSignatureRequest(goCtx context.Context, msg *types.MsgNewZrSignSignatureRequest) (*types.MsgNewZrSignSignatureRequestResponse, error) {

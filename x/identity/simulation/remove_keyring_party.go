@@ -3,8 +3,8 @@ package simulation
 import (
 	"math/rand"
 
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/keeper"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/identity/types"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/keeper"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/identity/types"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"

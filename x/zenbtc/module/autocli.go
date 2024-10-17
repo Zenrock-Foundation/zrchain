@@ -3,7 +3,7 @@ package zenbtc
 import (
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 
-	modulev1 "github.com/zenrocklabs/zenrock/zrchain/v4/api/zrchain/zenbtc"
+	modulev1 "github.com/Zenrock-Foundation/zrchain/v4/api/zrchain/zenbtc"
 )
 
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.

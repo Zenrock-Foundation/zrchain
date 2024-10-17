@@ -5,10 +5,10 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/boolparser"
+	"github.com/Zenrock-Foundation/zrchain/v4/policy"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/boolparser"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/policy"
 )
 
 // nolint:stylecheck,st1003

@@ -44,9 +44,9 @@ import (
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 
-	"github.com/zenrocklabs/zenrock/zrchain/v4/app"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/app/params"
-	genutilcli "github.com/zenrocklabs/zenrock/zrchain/v4/x/genutil/client/cli"
+	"github.com/Zenrock-Foundation/zrchain/v4/app"
+	"github.com/Zenrock-Foundation/zrchain/v4/app/params"
+	genutilcli "github.com/Zenrock-Foundation/zrchain/v4/x/genutil/client/cli"
 )
 
 // initCometBFTConfig helps to override default CometBFT Config values.

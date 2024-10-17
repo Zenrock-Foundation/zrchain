@@ -5,8 +5,8 @@ import (
 
 	"cosmossdk.io/collections"
 	errorsmod "cosmossdk.io/errors"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/treasury/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/treasury/types"
 )
 
 func (k Keeper) SignatureRequests(goCtx context.Context, req *types.QuerySignatureRequestsRequest) (*types.QuerySignatureRequestsResponse, error) {

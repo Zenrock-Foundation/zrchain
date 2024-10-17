@@ -3,11 +3,11 @@ package keeper_test
 import (
 	"testing"
 
+	keepertest "github.com/Zenrock-Foundation/zrchain/v4/testutil/keeper"
+	policy "github.com/Zenrock-Foundation/zrchain/v4/x/policy/module"
+	"github.com/Zenrock-Foundation/zrchain/v4/x/policy/types"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/stretchr/testify/require"
-	keepertest "github.com/zenrocklabs/zenrock/zrchain/v4/testutil/keeper"
-	policy "github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/module"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/policy/types"
 )
 
 func Test_msgServer_AddAction_Btl(t *testing.T) {

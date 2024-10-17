@@ -3,8 +3,8 @@ package types_test
 import (
 	"testing"
 
+	"github.com/Zenrock-Foundation/zrchain/v4/x/zenbtc/types"
 	"github.com/stretchr/testify/require"
-	"github.com/zenrocklabs/zenrock/zrchain/v4/x/zenbtc/types"
 )
 
 func TestGenesisState_Validate(t *testing.T) {
