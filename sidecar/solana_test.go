@@ -1,4 +1,4 @@
-package sidecar_test
+package main_test
 
 import (
 	"context"
