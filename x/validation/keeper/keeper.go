@@ -104,7 +104,7 @@ func NewKeeper(
 
 	sb := collections.NewSchemaBuilder(storeService)
 
-	return &Keeper{
+	k := &Keeper{
 		storeService:          storeService,
 		cdc:                   cdc,
 		authKeeper:            ak,
@@ -132,6 +132,12 @@ func NewKeeper(
 		RequestedEthereumNonces:       collections.NewMap(sb, types.RequestedEthereumNoncesKey, types.RequestedEthereumNoncesIndex, collections.Uint64Key, collections.Uint64Value),
 		PendingMintTransactions:       collections.NewItem(sb, types.PendingMintTransactionsKey, types.PendingMintTransactionsIndex, codec.CollValue[treasurytypes.PendingMintTransactions](cdc)),
 	}
+
+	if err := k.PendingMintTransactions.Set(context.Background(), treasurytypes.PendingMintTransactions{Txs: []*treasurytypes.PendingMintTransaction{}}); err != nil {
+		panic("error initialising pending mint transactions")
+	}
+
+	return k
 }
 
 // Logger returns a module-specific logger.
