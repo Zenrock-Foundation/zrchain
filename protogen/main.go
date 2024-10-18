@@ -46,7 +46,7 @@ func processProtoFiles() {
 	if err != nil {
 		log.Fatalf("Failed to get working directory: %v", err)
 	}
-	fmt.Printf("Script executed from: %s\n", cwd)
+	fmt.Printf("Program executed from: %s\n", cwd)
 
 	fmt.Println("Generating proto code")
 
@@ -64,6 +64,8 @@ func processProtoFiles() {
 		log.Fatalf("Error walking directory: %v", err)
 	}
 
+	fmt.Println(protoFiles)
+
 	var wg sync.WaitGroup
 
 	// Process each proto file concurrently
@@ -78,7 +80,7 @@ func processProtoFiles() {
 				return
 			}
 
-			matched, err := regexp.Match(`option go_package.*zenrock`, content)
+			matched, err := regexp.Match(`(?i)option\s+go_package\s*=\s*".*Zenrock-Foundation.*"`, content)
 			if err != nil {
 				log.Printf("Failed to match regex in file %s: %v", file, err)
 				return
@@ -110,7 +112,7 @@ func processProtoFiles() {
 	fmt.Println("Proto files generated.")
 
 	// Move proto files to the right places
-	srcDir := filepath.Join("github.com", "zenrocklabs", "zenrock", "zrchain", "v4")
+	srcDir := filepath.Join("github.com", "Zenrock-Foundation", "zrchain", "v4")
 	if err := copyDir(srcDir, "./"); err != nil {
 		log.Fatalf("Failed to copy files: %v", err)
 	}
@@ -215,11 +217,10 @@ func generatePulsarCode() {
 	projectRootDir := strings.TrimSpace(string(output))
 
 	fmt.Println("Generating proto pulsar code")
-	protoRoot := filepath.Join(projectRootDir, "zrchain")
 
 	// Run buf generate command
-	bufGenCmd := exec.Command("buf", "generate", "-v", "--template", filepath.Join(projectRootDir, "zrchain", "proto", "buf.gen.pulsar.yaml"))
-	bufGenCmd.Dir = protoRoot
+	bufGenCmd := exec.Command("buf", "generate", "-v", "--template", filepath.Join(projectRootDir, "proto", "buf.gen.pulsar.yaml"))
+	bufGenCmd.Dir = projectRootDir
 	bufGenCmd.Stdout = os.Stdout
 	bufGenCmd.Stderr = os.Stderr
 	if err := bufGenCmd.Run(); err != nil {

@@ -13,6 +13,7 @@ import (
 	"sort"
 	"strings"
 
+	"cosmossdk.io/collections"
 	"cosmossdk.io/core/comet"
 	sdkmath "cosmossdk.io/math"
 	abci "github.com/cometbft/cometbft/abci/types"
@@ -371,43 +372,106 @@ func (k *Keeper) nextRequestedEthereumNonceHeight(ctx context.Context) (uint64, 
 	return requestedHeight, nil
 }
 
-func (k *Keeper) nextUnconfirmedSolanaTx(ctx context.Context) (string, types.WithdrawalInfo, error) {
+func (k *Keeper) lookupEthereumNonce(ctx context.Context) (uint64, error) {
+	nonceHeight, err := k.nextRequestedEthereumNonceHeight(ctx)
+	if err != nil {
+		return 0, fmt.Errorf("error getting next requested Ethereum nonce height: %w", err)
+	}
+
+	if nonceHeight == 0 {
+		return 0, nil
+	}
+
+	addr, err := k.getZenBTCMinterAddressEVM(ctx)
+	if err != nil {
+		return 0, fmt.Errorf("error getting ZenBTC minter address: %w", err)
+	}
+
+	nonceResp, err := k.sidecarClient.GetEthereumNonceAtHeight(ctx, &sidecar.EthereumNonceAtHeightRequest{
+		Address: addr,
+		Height:  nonceHeight,
+	})
+	if err != nil {
+		return 0, fmt.Errorf("error fetching Ethereum nonce: %w", err)
+	}
+
+	return nonceResp.Nonce, nil
+}
+
+func (k *Keeper) lookupNextUnlockTx(ctx context.Context) (string, uint64, error) {
+	chain, txID, withdrawalInfo, totalTxs, err := k.nextUnconfirmedUnlockTx(ctx)
+	if err != nil {
+		return "", 0, err
+	}
+
+	if totalTxs == 0 || chain == "" || txID == "" {
+		return "", 0, nil
+	}
+
+	return k.querySidecarForUnlockTx(ctx, chain, txID, withdrawalInfo)
+}
+
+func (k *Keeper) nextUnconfirmedUnlockTx(ctx context.Context) (string, string, types.WithdrawalInfo, uint64, error) {
 	var lowestRetryCount uint32 = math.MaxUint32
-	solanaTxSignature := ""
-	solanaWithdrawalInfo := types.WithdrawalInfo{}
-	if err := k.UnconfirmedSolanaUnlockTxs.Walk(ctx, nil, func(txSignature string, withdrawalInfo types.WithdrawalInfo) (bool, error) {
+	chain := ""
+	txID := ""
+	withdrawalInfo := types.WithdrawalInfo{}
+	var totalTxs uint64 = 0
+	if err := k.UnconfirmedUnlockTxs.Walk(ctx, nil, func(key collections.Pair[string, string], withdrawInfo types.WithdrawalInfo) (bool, error) {
+		totalTxs++
 		if withdrawalInfo.RetryCount < lowestRetryCount {
 			lowestRetryCount = withdrawalInfo.RetryCount
-			solanaTxSignature = txSignature
-			solanaWithdrawalInfo = withdrawalInfo
+			chain = key.K1()
+			txID = key.K2()
+			withdrawalInfo = withdrawInfo
 		}
 		return false, nil
 	}); err != nil {
 		k.Logger(ctx).Error("error walking through UnconfirmedSolanaUnlockTxs", "err", err)
-		return "", types.WithdrawalInfo{}, err
+		return "", "", types.WithdrawalInfo{}, 0, err
 	}
-	return solanaTxSignature, solanaWithdrawalInfo, nil
+	return chain, txID, withdrawalInfo, totalTxs, nil
 }
 
-func (k *Keeper) querySidecarForSolanaTx(ctx context.Context, solanaTxSignature string, solanaWithdrawalInfo types.WithdrawalInfo) (uint64, error) {
-	var solanaTxSlot uint64 = 0
-	if solanaTxSignature != "" {
-		resp, err := k.sidecarClient.GetSolanaTransaction(ctx, &sidecar.SolanaTransactionRequest{TxSignature: solanaTxSignature})
-		if err != nil {
-			k.Logger(ctx).Warn("error retrieving Solana tx", "error", err)
-			solanaWithdrawalInfo.RetryCount++
-			if solanaWithdrawalInfo.RetryCount >= 25 {
-				k.Logger(ctx).Warn("Solana tx retry count exceeded; removing from store", "txSignature", solanaTxSignature)
-				if err := k.UnconfirmedSolanaUnlockTxs.Remove(ctx, solanaTxSignature); err != nil {
-					k.Logger(ctx).Error("error removing Solana tx", "txSignature", solanaTxSignature, "error", err)
-				}
-			} else {
-				k.UnconfirmedSolanaUnlockTxs.Set(ctx, solanaTxSignature, solanaWithdrawalInfo)
-			}
-		}
-		solanaTxSlot = resp.TxSlot
+func (k *Keeper) querySidecarForUnlockTx(ctx context.Context, chain, txID string, withdrawalInfo types.WithdrawalInfo) (string, uint64, error) {
+	txHeight, err := k.getTransactionHeight(ctx, chain, txID)
+	if err != nil {
+		k.handleUnlockTxError(ctx, chain, txID, withdrawalInfo, err)
 	}
-	return solanaTxSlot, nil
+	return chain, txHeight, err
+}
+
+func (k *Keeper) getTransactionHeight(ctx context.Context, chain, txID string) (uint64, error) {
+	switch chain {
+	case "eth":
+		resp, err := k.sidecarClient.GetEthereumTransaction(ctx, &sidecar.EthereumTransactionRequest{TxHash: txID})
+		if err != nil {
+			return 0, err
+		}
+		return resp.TxHeight, nil
+	case "sol":
+		resp, err := k.sidecarClient.GetSolanaTransaction(ctx, &sidecar.SolanaTransactionRequest{TxSignature: txID})
+		if err != nil {
+			return 0, err
+		}
+		return resp.TxSlot, nil
+	default:
+		return 0, fmt.Errorf("unsupported chain: %s", chain)
+	}
+}
+
+func (k *Keeper) handleUnlockTxError(ctx context.Context, chain, txID string, withdrawalInfo types.WithdrawalInfo, err error) {
+	k.Logger(ctx).Warn("error retrieving unlock tx", "error", err)
+	withdrawalInfo.RetryCount++
+	key := collections.Join(chain, txID)
+	if withdrawalInfo.RetryCount >= 25 {
+		k.Logger(ctx).Warn("unlock tx retry count exceeded; removing from store", "txSignature", txID)
+		if removeErr := k.UnconfirmedUnlockTxs.Remove(ctx, key); removeErr != nil {
+			k.Logger(ctx).Error("error removing unlock tx", "txID", txID, "error", removeErr)
+		}
+	} else {
+		k.UnconfirmedUnlockTxs.Set(ctx, key, withdrawalInfo)
+	}
 }
 
 func (k *Keeper) constructMintTx(ctx context.Context, recipientAddr string, amount *big.Int, fee uint64, nonce, gasPrice, gasLimit uint64) ([]byte, error) {

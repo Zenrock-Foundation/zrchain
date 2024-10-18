@@ -30,11 +30,13 @@ class QueryLockTransactionsResponse(_message.Message):
     lock_transactions: _containers.RepeatedScalarFieldContainer[str]
     def __init__(self, lock_transactions: _Optional[_Iterable[str]] = ...) -> None: ...
 
-class QueryConfirmedSolanaUnlockTransactionsRequest(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+class QueryConfirmedUnlockTransactionsRequest(_message.Message):
+    __slots__ = ("chain",)
+    CHAIN_FIELD_NUMBER: _ClassVar[int]
+    chain: str
+    def __init__(self, chain: _Optional[str] = ...) -> None: ...
 
-class QueryConfirmedSolanaUnlockTransactionsResponse(_message.Message):
+class QueryConfirmedUnlockTransactionsResponse(_message.Message):
     __slots__ = ("unlock_transactions",)
     UNLOCK_TRANSACTIONS_FIELD_NUMBER: _ClassVar[int]
     unlock_transactions: _containers.RepeatedScalarFieldContainer[str]

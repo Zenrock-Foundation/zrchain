@@ -25,9 +25,9 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				},
 
 				{
-					RpcMethod:      "ConfirmedSolanaUnlockTransactions",
-					Use:            "confirmed-solana-unlock-transactions",
-					Short:          "Query ConfirmedSolanaUnlockTransactions",
+					RpcMethod:      "ConfirmedUnlockTransactions",
+					Use:            "confirmed-unlock-transactions",
+					Short:          "Query ConfirmedUnlockTransactions",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
 				},
 
@@ -57,11 +57,14 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					},
 				},
 				{
-					RpcMethod: "SubmitSolanaUnlockTransaction",
-					Use:       "submit-solana-unlock-transaction",
-					Short:     "Send a SubmitSolanaUnlockTransaction tx",
+					RpcMethod: "SubmitUnlockTransaction",
+					Use:       "submit-unlock-transaction",
+					Short:     "Send a SubmitUnlockTransaction tx",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
-						{ProtoField: "tx_signature"},
+						{ProtoField: "chain"},
+						{ProtoField: "txID"},
+						{ProtoField: "withdrawalAddr"},
+						{ProtoField: "amount"},
 					},
 				},
 				// this line is used by ignite scaffolding # autocli/tx

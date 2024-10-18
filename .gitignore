@@ -13,3 +13,5 @@ react
 ts-client
 cmd/zenrockd/zenrockd*
 !scripts/bootstrap/main.sh
+
+sidecar/neutrino/neutrino_*

@@ -25,10 +25,10 @@ class MsgStub(object):
                 request_serializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgVerifyDepositBlockInclusion.SerializeToString,
                 response_deserializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgVerifyDepositBlockInclusionResponse.FromString,
                 )
-        self.SubmitSolanaUnlockTransaction = channel.unary_unary(
-                '/zrchain.zenbtc.Msg/SubmitSolanaUnlockTransaction',
-                request_serializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitSolanaUnlockTransaction.SerializeToString,
-                response_deserializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitSolanaUnlockTransactionResponse.FromString,
+        self.SubmitUnlockTransaction = channel.unary_unary(
+                '/zrchain.zenbtc.Msg/SubmitUnlockTransaction',
+                request_serializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitUnlockTransaction.SerializeToString,
+                response_deserializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitUnlockTransactionResponse.FromString,
                 )
 
 
@@ -50,7 +50,7 @@ class MsgServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def SubmitSolanaUnlockTransaction(self, request, context):
+    def SubmitUnlockTransaction(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -69,10 +69,10 @@ def add_MsgServicer_to_server(servicer, server):
                     request_deserializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgVerifyDepositBlockInclusion.FromString,
                     response_serializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgVerifyDepositBlockInclusionResponse.SerializeToString,
             ),
-            'SubmitSolanaUnlockTransaction': grpc.unary_unary_rpc_method_handler(
-                    servicer.SubmitSolanaUnlockTransaction,
-                    request_deserializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitSolanaUnlockTransaction.FromString,
-                    response_serializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitSolanaUnlockTransactionResponse.SerializeToString,
+            'SubmitUnlockTransaction': grpc.unary_unary_rpc_method_handler(
+                    servicer.SubmitUnlockTransaction,
+                    request_deserializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitUnlockTransaction.FromString,
+                    response_serializer=zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitUnlockTransactionResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -120,7 +120,7 @@ class Msg(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def SubmitSolanaUnlockTransaction(request,
+    def SubmitUnlockTransaction(request,
             target,
             options=(),
             channel_credentials=None,
@@ -130,8 +130,8 @@ class Msg(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/zrchain.zenbtc.Msg/SubmitSolanaUnlockTransaction',
-            zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitSolanaUnlockTransaction.SerializeToString,
-            zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitSolanaUnlockTransactionResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/zrchain.zenbtc.Msg/SubmitUnlockTransaction',
+            zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitUnlockTransaction.SerializeToString,
+            zrchain_dot_zenbtc_dot_tx__pb2.MsgSubmitUnlockTransactionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

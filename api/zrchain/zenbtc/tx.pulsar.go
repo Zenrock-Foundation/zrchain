@@ -2108,31 +2108,33 @@ func (x *fastReflection_MsgVerifyDepositBlockInclusionResponse) ProtoMethods() *
 }
 
 var (
-	md_MsgSubmitSolanaUnlockTransaction                 protoreflect.MessageDescriptor
-	fd_MsgSubmitSolanaUnlockTransaction_creator         protoreflect.FieldDescriptor
-	fd_MsgSubmitSolanaUnlockTransaction_tx_signature    protoreflect.FieldDescriptor
-	fd_MsgSubmitSolanaUnlockTransaction_withdrawal_addr protoreflect.FieldDescriptor
-	fd_MsgSubmitSolanaUnlockTransaction_amount          protoreflect.FieldDescriptor
+	md_MsgSubmitUnlockTransaction                protoreflect.MessageDescriptor
+	fd_MsgSubmitUnlockTransaction_creator        protoreflect.FieldDescriptor
+	fd_MsgSubmitUnlockTransaction_chain          protoreflect.FieldDescriptor
+	fd_MsgSubmitUnlockTransaction_txID           protoreflect.FieldDescriptor
+	fd_MsgSubmitUnlockTransaction_withdrawalAddr protoreflect.FieldDescriptor
+	fd_MsgSubmitUnlockTransaction_amount         protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_zrchain_zenbtc_tx_proto_init()
-	md_MsgSubmitSolanaUnlockTransaction = File_zrchain_zenbtc_tx_proto.Messages().ByName("MsgSubmitSolanaUnlockTransaction")
-	fd_MsgSubmitSolanaUnlockTransaction_creator = md_MsgSubmitSolanaUnlockTransaction.Fields().ByName("creator")
-	fd_MsgSubmitSolanaUnlockTransaction_tx_signature = md_MsgSubmitSolanaUnlockTransaction.Fields().ByName("tx_signature")
-	fd_MsgSubmitSolanaUnlockTransaction_withdrawal_addr = md_MsgSubmitSolanaUnlockTransaction.Fields().ByName("withdrawal_addr")
-	fd_MsgSubmitSolanaUnlockTransaction_amount = md_MsgSubmitSolanaUnlockTransaction.Fields().ByName("amount")
+	md_MsgSubmitUnlockTransaction = File_zrchain_zenbtc_tx_proto.Messages().ByName("MsgSubmitUnlockTransaction")
+	fd_MsgSubmitUnlockTransaction_creator = md_MsgSubmitUnlockTransaction.Fields().ByName("creator")
+	fd_MsgSubmitUnlockTransaction_chain = md_MsgSubmitUnlockTransaction.Fields().ByName("chain")
+	fd_MsgSubmitUnlockTransaction_txID = md_MsgSubmitUnlockTransaction.Fields().ByName("txID")
+	fd_MsgSubmitUnlockTransaction_withdrawalAddr = md_MsgSubmitUnlockTransaction.Fields().ByName("withdrawalAddr")
+	fd_MsgSubmitUnlockTransaction_amount = md_MsgSubmitUnlockTransaction.Fields().ByName("amount")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgSubmitSolanaUnlockTransaction)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgSubmitUnlockTransaction)(nil)
 
-type fastReflection_MsgSubmitSolanaUnlockTransaction MsgSubmitSolanaUnlockTransaction
+type fastReflection_MsgSubmitUnlockTransaction MsgSubmitUnlockTransaction
 
-func (x *MsgSubmitSolanaUnlockTransaction) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgSubmitSolanaUnlockTransaction)(x)
+func (x *MsgSubmitUnlockTransaction) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgSubmitUnlockTransaction)(x)
 }
 
-func (x *MsgSubmitSolanaUnlockTransaction) slowProtoReflect() protoreflect.Message {
+func (x *MsgSubmitUnlockTransaction) slowProtoReflect() protoreflect.Message {
 	mi := &file_zrchain_zenbtc_tx_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2144,43 +2146,43 @@ func (x *MsgSubmitSolanaUnlockTransaction) slowProtoReflect() protoreflect.Messa
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgSubmitSolanaUnlockTransaction_messageType fastReflection_MsgSubmitSolanaUnlockTransaction_messageType
-var _ protoreflect.MessageType = fastReflection_MsgSubmitSolanaUnlockTransaction_messageType{}
+var _fastReflection_MsgSubmitUnlockTransaction_messageType fastReflection_MsgSubmitUnlockTransaction_messageType
+var _ protoreflect.MessageType = fastReflection_MsgSubmitUnlockTransaction_messageType{}
 
-type fastReflection_MsgSubmitSolanaUnlockTransaction_messageType struct{}
+type fastReflection_MsgSubmitUnlockTransaction_messageType struct{}
 
-func (x fastReflection_MsgSubmitSolanaUnlockTransaction_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgSubmitSolanaUnlockTransaction)(nil)
+func (x fastReflection_MsgSubmitUnlockTransaction_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgSubmitUnlockTransaction)(nil)
 }
-func (x fastReflection_MsgSubmitSolanaUnlockTransaction_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgSubmitSolanaUnlockTransaction)
+func (x fastReflection_MsgSubmitUnlockTransaction_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgSubmitUnlockTransaction)
 }
-func (x fastReflection_MsgSubmitSolanaUnlockTransaction_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgSubmitSolanaUnlockTransaction
+func (x fastReflection_MsgSubmitUnlockTransaction_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgSubmitUnlockTransaction
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgSubmitSolanaUnlockTransaction
+func (x *fastReflection_MsgSubmitUnlockTransaction) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgSubmitUnlockTransaction
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Type() protoreflect.MessageType {
-	return _fastReflection_MsgSubmitSolanaUnlockTransaction_messageType
+func (x *fastReflection_MsgSubmitUnlockTransaction) Type() protoreflect.MessageType {
+	return _fastReflection_MsgSubmitUnlockTransaction_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) New() protoreflect.Message {
-	return new(fastReflection_MsgSubmitSolanaUnlockTransaction)
+func (x *fastReflection_MsgSubmitUnlockTransaction) New() protoreflect.Message {
+	return new(fastReflection_MsgSubmitUnlockTransaction)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Interface() protoreflect.ProtoMessage {
-	return (*MsgSubmitSolanaUnlockTransaction)(x)
+func (x *fastReflection_MsgSubmitUnlockTransaction) Interface() protoreflect.ProtoMessage {
+	return (*MsgSubmitUnlockTransaction)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -2188,28 +2190,34 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Interface() protorefle
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_MsgSubmitUnlockTransaction) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Creator != "" {
 		value := protoreflect.ValueOfString(x.Creator)
-		if !f(fd_MsgSubmitSolanaUnlockTransaction_creator, value) {
+		if !f(fd_MsgSubmitUnlockTransaction_creator, value) {
 			return
 		}
 	}
-	if x.TxSignature != "" {
-		value := protoreflect.ValueOfString(x.TxSignature)
-		if !f(fd_MsgSubmitSolanaUnlockTransaction_tx_signature, value) {
+	if x.Chain != "" {
+		value := protoreflect.ValueOfString(x.Chain)
+		if !f(fd_MsgSubmitUnlockTransaction_chain, value) {
+			return
+		}
+	}
+	if x.TxID != "" {
+		value := protoreflect.ValueOfString(x.TxID)
+		if !f(fd_MsgSubmitUnlockTransaction_txID, value) {
 			return
 		}
 	}
 	if x.WithdrawalAddr != "" {
 		value := protoreflect.ValueOfString(x.WithdrawalAddr)
-		if !f(fd_MsgSubmitSolanaUnlockTransaction_withdrawal_addr, value) {
+		if !f(fd_MsgSubmitUnlockTransaction_withdrawalAddr, value) {
 			return
 		}
 	}
 	if x.Amount != uint64(0) {
 		value := protoreflect.ValueOfUint64(x.Amount)
-		if !f(fd_MsgSubmitSolanaUnlockTransaction_amount, value) {
+		if !f(fd_MsgSubmitUnlockTransaction_amount, value) {
 			return
 		}
 	}
@@ -2226,21 +2234,23 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Range(f func(protorefl
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgSubmitUnlockTransaction) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.creator":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.creator":
 		return x.Creator != ""
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.tx_signature":
-		return x.TxSignature != ""
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.withdrawal_addr":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.chain":
+		return x.Chain != ""
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.txID":
+		return x.TxID != ""
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.withdrawalAddr":
 		return x.WithdrawalAddr != ""
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.amount":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.amount":
 		return x.Amount != uint64(0)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransaction"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransaction does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2250,21 +2260,23 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Has(fd protoreflect.Fi
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgSubmitUnlockTransaction) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.creator":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.creator":
 		x.Creator = ""
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.tx_signature":
-		x.TxSignature = ""
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.withdrawal_addr":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.chain":
+		x.Chain = ""
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.txID":
+		x.TxID = ""
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.withdrawalAddr":
 		x.WithdrawalAddr = ""
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.amount":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.amount":
 		x.Amount = uint64(0)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransaction"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransaction does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2274,25 +2286,28 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Clear(fd protoreflect.
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgSubmitUnlockTransaction) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.creator":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.creator":
 		value := x.Creator
 		return protoreflect.ValueOfString(value)
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.tx_signature":
-		value := x.TxSignature
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.chain":
+		value := x.Chain
 		return protoreflect.ValueOfString(value)
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.withdrawal_addr":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.txID":
+		value := x.TxID
+		return protoreflect.ValueOfString(value)
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.withdrawalAddr":
 		value := x.WithdrawalAddr
 		return protoreflect.ValueOfString(value)
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.amount":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.amount":
 		value := x.Amount
 		return protoreflect.ValueOfUint64(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransaction"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransaction does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -2306,21 +2321,23 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Get(descriptor protore
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgSubmitUnlockTransaction) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.creator":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.creator":
 		x.Creator = value.Interface().(string)
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.tx_signature":
-		x.TxSignature = value.Interface().(string)
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.withdrawal_addr":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.chain":
+		x.Chain = value.Interface().(string)
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.txID":
+		x.TxID = value.Interface().(string)
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.withdrawalAddr":
 		x.WithdrawalAddr = value.Interface().(string)
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.amount":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.amount":
 		x.Amount = value.Uint()
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransaction"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransaction does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2334,52 +2351,56 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Set(fd protoreflect.Fi
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgSubmitUnlockTransaction) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.creator":
-		panic(fmt.Errorf("field creator of message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction is not mutable"))
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.tx_signature":
-		panic(fmt.Errorf("field tx_signature of message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction is not mutable"))
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.withdrawal_addr":
-		panic(fmt.Errorf("field withdrawal_addr of message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction is not mutable"))
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.amount":
-		panic(fmt.Errorf("field amount of message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction is not mutable"))
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.creator":
+		panic(fmt.Errorf("field creator of message zrchain.zenbtc.MsgSubmitUnlockTransaction is not mutable"))
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.chain":
+		panic(fmt.Errorf("field chain of message zrchain.zenbtc.MsgSubmitUnlockTransaction is not mutable"))
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.txID":
+		panic(fmt.Errorf("field txID of message zrchain.zenbtc.MsgSubmitUnlockTransaction is not mutable"))
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.withdrawalAddr":
+		panic(fmt.Errorf("field withdrawalAddr of message zrchain.zenbtc.MsgSubmitUnlockTransaction is not mutable"))
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.amount":
+		panic(fmt.Errorf("field amount of message zrchain.zenbtc.MsgSubmitUnlockTransaction is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransaction"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransaction does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgSubmitUnlockTransaction) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.creator":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.creator":
 		return protoreflect.ValueOfString("")
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.tx_signature":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.chain":
 		return protoreflect.ValueOfString("")
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.withdrawal_addr":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.txID":
 		return protoreflect.ValueOfString("")
-	case "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction.amount":
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.withdrawalAddr":
+		return protoreflect.ValueOfString("")
+	case "zrchain.zenbtc.MsgSubmitUnlockTransaction.amount":
 		return protoreflect.ValueOfUint64(uint64(0))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransaction"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransaction does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgSubmitUnlockTransaction) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in zrchain.zenbtc.MsgSubmitUnlockTransaction", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -2387,7 +2408,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) WhichOneof(d protorefl
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgSubmitUnlockTransaction) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -2398,7 +2419,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) GetUnknown() protorefl
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgSubmitUnlockTransaction) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -2410,7 +2431,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) SetUnknown(fields prot
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) IsValid() bool {
+func (x *fastReflection_MsgSubmitUnlockTransaction) IsValid() bool {
 	return x != nil
 }
 
@@ -2420,9 +2441,9 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgSubmitUnlockTransaction) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgSubmitSolanaUnlockTransaction)
+		x := input.Message.Interface().(*MsgSubmitUnlockTransaction)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2438,7 +2459,11 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoi
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
-		l = len(x.TxSignature)
+		l = len(x.Chain)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.TxID)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
@@ -2459,7 +2484,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoi
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgSubmitSolanaUnlockTransaction)
+		x := input.Message.Interface().(*MsgSubmitUnlockTransaction)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2481,19 +2506,26 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoi
 		if x.Amount != 0 {
 			i = runtime.EncodeVarint(dAtA, i, uint64(x.Amount))
 			i--
-			dAtA[i] = 0x20
+			dAtA[i] = 0x28
 		}
 		if len(x.WithdrawalAddr) > 0 {
 			i -= len(x.WithdrawalAddr)
 			copy(dAtA[i:], x.WithdrawalAddr)
 			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.WithdrawalAddr)))
 			i--
+			dAtA[i] = 0x22
+		}
+		if len(x.TxID) > 0 {
+			i -= len(x.TxID)
+			copy(dAtA[i:], x.TxID)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.TxID)))
+			i--
 			dAtA[i] = 0x1a
 		}
-		if len(x.TxSignature) > 0 {
-			i -= len(x.TxSignature)
-			copy(dAtA[i:], x.TxSignature)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.TxSignature)))
+		if len(x.Chain) > 0 {
+			i -= len(x.Chain)
+			copy(dAtA[i:], x.Chain)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Chain)))
 			i--
 			dAtA[i] = 0x12
 		}
@@ -2515,7 +2547,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoi
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgSubmitSolanaUnlockTransaction)
+		x := input.Message.Interface().(*MsgSubmitUnlockTransaction)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2547,10 +2579,10 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoi
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSubmitSolanaUnlockTransaction: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSubmitUnlockTransaction: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSubmitSolanaUnlockTransaction: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSubmitUnlockTransaction: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -2587,7 +2619,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoi
 				iNdEx = postIndex
 			case 2:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field TxSignature", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Chain", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -2615,9 +2647,41 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoi
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.TxSignature = string(dAtA[iNdEx:postIndex])
+				x.Chain = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			case 3:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field TxID", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.TxID = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 4:
 				if wireType != 2 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field WithdrawalAddr", wireType)
 				}
@@ -2649,7 +2713,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoi
 				}
 				x.WithdrawalAddr = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
-			case 4:
+			case 5:
 				if wireType != 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Amount", wireType)
 				}
@@ -2704,23 +2768,23 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransaction) ProtoMethods() *protoi
 }
 
 var (
-	md_MsgSubmitSolanaUnlockTransactionResponse protoreflect.MessageDescriptor
+	md_MsgSubmitUnlockTransactionResponse protoreflect.MessageDescriptor
 )
 
 func init() {
 	file_zrchain_zenbtc_tx_proto_init()
-	md_MsgSubmitSolanaUnlockTransactionResponse = File_zrchain_zenbtc_tx_proto.Messages().ByName("MsgSubmitSolanaUnlockTransactionResponse")
+	md_MsgSubmitUnlockTransactionResponse = File_zrchain_zenbtc_tx_proto.Messages().ByName("MsgSubmitUnlockTransactionResponse")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgSubmitSolanaUnlockTransactionResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgSubmitUnlockTransactionResponse)(nil)
 
-type fastReflection_MsgSubmitSolanaUnlockTransactionResponse MsgSubmitSolanaUnlockTransactionResponse
+type fastReflection_MsgSubmitUnlockTransactionResponse MsgSubmitUnlockTransactionResponse
 
-func (x *MsgSubmitSolanaUnlockTransactionResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgSubmitSolanaUnlockTransactionResponse)(x)
+func (x *MsgSubmitUnlockTransactionResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgSubmitUnlockTransactionResponse)(x)
 }
 
-func (x *MsgSubmitSolanaUnlockTransactionResponse) slowProtoReflect() protoreflect.Message {
+func (x *MsgSubmitUnlockTransactionResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_zrchain_zenbtc_tx_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2732,43 +2796,43 @@ func (x *MsgSubmitSolanaUnlockTransactionResponse) slowProtoReflect() protorefle
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgSubmitSolanaUnlockTransactionResponse_messageType fastReflection_MsgSubmitSolanaUnlockTransactionResponse_messageType
-var _ protoreflect.MessageType = fastReflection_MsgSubmitSolanaUnlockTransactionResponse_messageType{}
+var _fastReflection_MsgSubmitUnlockTransactionResponse_messageType fastReflection_MsgSubmitUnlockTransactionResponse_messageType
+var _ protoreflect.MessageType = fastReflection_MsgSubmitUnlockTransactionResponse_messageType{}
 
-type fastReflection_MsgSubmitSolanaUnlockTransactionResponse_messageType struct{}
+type fastReflection_MsgSubmitUnlockTransactionResponse_messageType struct{}
 
-func (x fastReflection_MsgSubmitSolanaUnlockTransactionResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgSubmitSolanaUnlockTransactionResponse)(nil)
+func (x fastReflection_MsgSubmitUnlockTransactionResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgSubmitUnlockTransactionResponse)(nil)
 }
-func (x fastReflection_MsgSubmitSolanaUnlockTransactionResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgSubmitSolanaUnlockTransactionResponse)
+func (x fastReflection_MsgSubmitUnlockTransactionResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgSubmitUnlockTransactionResponse)
 }
-func (x fastReflection_MsgSubmitSolanaUnlockTransactionResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgSubmitSolanaUnlockTransactionResponse
+func (x fastReflection_MsgSubmitUnlockTransactionResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgSubmitUnlockTransactionResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgSubmitSolanaUnlockTransactionResponse
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgSubmitUnlockTransactionResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Type() protoreflect.MessageType {
-	return _fastReflection_MsgSubmitSolanaUnlockTransactionResponse_messageType
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) Type() protoreflect.MessageType {
+	return _fastReflection_MsgSubmitUnlockTransactionResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) New() protoreflect.Message {
-	return new(fastReflection_MsgSubmitSolanaUnlockTransactionResponse)
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) New() protoreflect.Message {
+	return new(fastReflection_MsgSubmitUnlockTransactionResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Interface() protoreflect.ProtoMessage {
-	return (*MsgSubmitSolanaUnlockTransactionResponse)(x)
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) Interface() protoreflect.ProtoMessage {
+	return (*MsgSubmitUnlockTransactionResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -2776,7 +2840,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Interface() pr
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 }
 
 // Has reports whether a field is populated.
@@ -2790,13 +2854,13 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Range(f func(p
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransactionResponse"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransactionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2806,13 +2870,13 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Has(fd protore
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransactionResponse"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransactionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2822,13 +2886,13 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Clear(fd proto
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransactionResponse"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransactionResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -2842,13 +2906,13 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Get(descriptor
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransactionResponse"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransactionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2862,36 +2926,36 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Set(fd protore
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransactionResponse"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransactionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: zrchain.zenbtc.MsgSubmitUnlockTransactionResponse"))
 		}
-		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message zrchain.zenbtc.MsgSubmitUnlockTransactionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in zrchain.zenbtc.MsgSubmitUnlockTransactionResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -2899,7 +2963,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) WhichOneof(d p
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -2910,7 +2974,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) GetUnknown() p
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -2922,7 +2986,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) SetUnknown(fie
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) IsValid() bool {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -2932,9 +2996,9 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) IsValid() bool
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgSubmitUnlockTransactionResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgSubmitSolanaUnlockTransactionResponse)
+		x := input.Message.Interface().(*MsgSubmitUnlockTransactionResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2956,7 +3020,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) ProtoMethods()
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgSubmitSolanaUnlockTransactionResponse)
+		x := input.Message.Interface().(*MsgSubmitUnlockTransactionResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2986,7 +3050,7 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) ProtoMethods()
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgSubmitSolanaUnlockTransactionResponse)
+		x := input.Message.Interface().(*MsgSubmitUnlockTransactionResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -3018,10 +3082,10 @@ func (x *fastReflection_MsgSubmitSolanaUnlockTransactionResponse) ProtoMethods()
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSubmitSolanaUnlockTransactionResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSubmitUnlockTransactionResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSubmitSolanaUnlockTransactionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSubmitUnlockTransactionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			default:
@@ -3263,19 +3327,20 @@ func (*MsgVerifyDepositBlockInclusionResponse) Descriptor() ([]byte, []int) {
 	return file_zrchain_zenbtc_tx_proto_rawDescGZIP(), []int{3}
 }
 
-type MsgSubmitSolanaUnlockTransaction struct {
+type MsgSubmitUnlockTransaction struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	Creator        string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
-	TxSignature    string `protobuf:"bytes,2,opt,name=tx_signature,json=txSignature,proto3" json:"tx_signature,omitempty"`
-	WithdrawalAddr string `protobuf:"bytes,3,opt,name=withdrawal_addr,json=withdrawalAddr,proto3" json:"withdrawal_addr,omitempty"`
-	Amount         uint64 `protobuf:"varint,4,opt,name=amount,proto3" json:"amount,omitempty"`
+	Chain          string `protobuf:"bytes,2,opt,name=chain,proto3" json:"chain,omitempty"`
+	TxID           string `protobuf:"bytes,3,opt,name=txID,proto3" json:"txID,omitempty"`
+	WithdrawalAddr string `protobuf:"bytes,4,opt,name=withdrawalAddr,proto3" json:"withdrawalAddr,omitempty"`
+	Amount         uint64 `protobuf:"varint,5,opt,name=amount,proto3" json:"amount,omitempty"`
 }
 
-func (x *MsgSubmitSolanaUnlockTransaction) Reset() {
-	*x = MsgSubmitSolanaUnlockTransaction{}
+func (x *MsgSubmitUnlockTransaction) Reset() {
+	*x = MsgSubmitUnlockTransaction{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_zrchain_zenbtc_tx_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3283,53 +3348,60 @@ func (x *MsgSubmitSolanaUnlockTransaction) Reset() {
 	}
 }
 
-func (x *MsgSubmitSolanaUnlockTransaction) String() string {
+func (x *MsgSubmitUnlockTransaction) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgSubmitSolanaUnlockTransaction) ProtoMessage() {}
+func (*MsgSubmitUnlockTransaction) ProtoMessage() {}
 
-// Deprecated: Use MsgSubmitSolanaUnlockTransaction.ProtoReflect.Descriptor instead.
-func (*MsgSubmitSolanaUnlockTransaction) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgSubmitUnlockTransaction.ProtoReflect.Descriptor instead.
+func (*MsgSubmitUnlockTransaction) Descriptor() ([]byte, []int) {
 	return file_zrchain_zenbtc_tx_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *MsgSubmitSolanaUnlockTransaction) GetCreator() string {
+func (x *MsgSubmitUnlockTransaction) GetCreator() string {
 	if x != nil {
 		return x.Creator
 	}
 	return ""
 }
 
-func (x *MsgSubmitSolanaUnlockTransaction) GetTxSignature() string {
+func (x *MsgSubmitUnlockTransaction) GetChain() string {
 	if x != nil {
-		return x.TxSignature
+		return x.Chain
 	}
 	return ""
 }
 
-func (x *MsgSubmitSolanaUnlockTransaction) GetWithdrawalAddr() string {
+func (x *MsgSubmitUnlockTransaction) GetTxID() string {
+	if x != nil {
+		return x.TxID
+	}
+	return ""
+}
+
+func (x *MsgSubmitUnlockTransaction) GetWithdrawalAddr() string {
 	if x != nil {
 		return x.WithdrawalAddr
 	}
 	return ""
 }
 
-func (x *MsgSubmitSolanaUnlockTransaction) GetAmount() uint64 {
+func (x *MsgSubmitUnlockTransaction) GetAmount() uint64 {
 	if x != nil {
 		return x.Amount
 	}
 	return 0
 }
 
-type MsgSubmitSolanaUnlockTransactionResponse struct {
+type MsgSubmitUnlockTransactionResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *MsgSubmitSolanaUnlockTransactionResponse) Reset() {
-	*x = MsgSubmitSolanaUnlockTransactionResponse{}
+func (x *MsgSubmitUnlockTransactionResponse) Reset() {
+	*x = MsgSubmitUnlockTransactionResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_zrchain_zenbtc_tx_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3337,14 +3409,14 @@ func (x *MsgSubmitSolanaUnlockTransactionResponse) Reset() {
 	}
 }
 
-func (x *MsgSubmitSolanaUnlockTransactionResponse) String() string {
+func (x *MsgSubmitUnlockTransactionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgSubmitSolanaUnlockTransactionResponse) ProtoMessage() {}
+func (*MsgSubmitUnlockTransactionResponse) ProtoMessage() {}
 
-// Deprecated: Use MsgSubmitSolanaUnlockTransactionResponse.ProtoReflect.Descriptor instead.
-func (*MsgSubmitSolanaUnlockTransactionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgSubmitUnlockTransactionResponse.ProtoReflect.Descriptor instead.
+func (*MsgSubmitUnlockTransactionResponse) Descriptor() ([]byte, []int) {
 	return file_zrchain_zenbtc_tx_proto_rawDescGZIP(), []int{5}
 }
 
@@ -3394,54 +3466,53 @@ var file_zrchain_zenbtc_tx_proto_rawDesc = []byte{
 	0x65, 0x61, 0x74, 0x6f, 0x72, 0x22, 0x28, 0x0a, 0x26, 0x4d, 0x73, 0x67, 0x56, 0x65, 0x72, 0x69,
 	0x66, 0x79, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x49, 0x6e,
 	0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
-	0xae, 0x01, 0x0a, 0x20, 0x4d, 0x73, 0x67, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x53, 0x6f, 0x6c,
-	0x61, 0x6e, 0x61, 0x55, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63,
-	0x74, 0x69, 0x6f, 0x6e, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x21,
-	0x0a, 0x0c, 0x74, 0x78, 0x5f, 0x73, 0x69, 0x67, 0x6e, 0x61, 0x74, 0x75, 0x72, 0x65, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x74, 0x78, 0x53, 0x69, 0x67, 0x6e, 0x61, 0x74, 0x75, 0x72,
-	0x65, 0x12, 0x27, 0x0a, 0x0f, 0x77, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x61, 0x6c, 0x5f,
-	0x61, 0x64, 0x64, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x77, 0x69, 0x74, 0x68,
+	0xae, 0x01, 0x0a, 0x1a, 0x4d, 0x73, 0x67, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x55, 0x6e, 0x6c,
+	0x6f, 0x63, 0x6b, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x18,
+	0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x68, 0x61, 0x69,
+	0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x12, 0x12,
+	0x0a, 0x04, 0x74, 0x78, 0x49, 0x44, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x78,
+	0x49, 0x44, 0x12, 0x26, 0x0a, 0x0e, 0x77, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x61, 0x6c,
+	0x41, 0x64, 0x64, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x77, 0x69, 0x74, 0x68,
 	0x64, 0x72, 0x61, 0x77, 0x61, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x6d,
-	0x6f, 0x75, 0x6e, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x61, 0x6d, 0x6f, 0x75,
+	0x6f, 0x75, 0x6e, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x61, 0x6d, 0x6f, 0x75,
 	0x6e, 0x74, 0x3a, 0x0c, 0x82, 0xe7, 0xb0, 0x2a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72,
-	0x22, 0x2a, 0x0a, 0x28, 0x4d, 0x73, 0x67, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x53, 0x6f, 0x6c,
-	0x61, 0x6e, 0x61, 0x55, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63,
-	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xfc, 0x02, 0x0a,
-	0x03, 0x4d, 0x73, 0x67, 0x12, 0x58, 0x0a, 0x0c, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61,
-	0x72, 0x61, 0x6d, 0x73, 0x12, 0x1f, 0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x2e, 0x7a,
-	0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50,
-	0x61, 0x72, 0x61, 0x6d, 0x73, 0x1a, 0x27, 0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x2e,
-	0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x85,
-	0x01, 0x0a, 0x1b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74,
-	0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x49, 0x6e, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2e,
+	0x22, 0x24, 0x0a, 0x22, 0x4d, 0x73, 0x67, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x55, 0x6e, 0x6c,
+	0x6f, 0x63, 0x6b, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xe9, 0x02, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x58,
+	0x0a, 0x0c, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x1f,
 	0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e,
-	0x4d, 0x73, 0x67, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74,
-	0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x49, 0x6e, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x1a, 0x36,
-	0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e,
-	0x4d, 0x73, 0x67, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74,
-	0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x49, 0x6e, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x8b, 0x01, 0x0a, 0x1d, 0x53, 0x75, 0x62, 0x6d, 0x69,
-	0x74, 0x53, 0x6f, 0x6c, 0x61, 0x6e, 0x61, 0x55, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x54, 0x72, 0x61,
-	0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x30, 0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61,
-	0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e, 0x4d, 0x73, 0x67, 0x53, 0x75, 0x62,
-	0x6d, 0x69, 0x74, 0x53, 0x6f, 0x6c, 0x61, 0x6e, 0x61, 0x55, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x54,
-	0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x38, 0x2e, 0x7a, 0x72, 0x63,
-	0x68, 0x61, 0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e, 0x4d, 0x73, 0x67, 0x53,
-	0x75, 0x62, 0x6d, 0x69, 0x74, 0x53, 0x6f, 0x6c, 0x61, 0x6e, 0x61, 0x55, 0x6e, 0x6c, 0x6f, 0x63,
-	0x6b, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0x97, 0x01, 0x0a, 0x12,
-	0x63, 0x6f, 0x6d, 0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62,
-	0x74, 0x63, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x1f, 0x63,
-	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x73, 0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x7a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x2f, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0xa2, 0x02,
-	0x03, 0x5a, 0x5a, 0x58, 0xaa, 0x02, 0x0e, 0x5a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x2e, 0x5a,
-	0x65, 0x6e, 0x62, 0x74, 0x63, 0xca, 0x02, 0x0e, 0x5a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x5c,
-	0x5a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0xe2, 0x02, 0x1a, 0x5a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e,
-	0x5c, 0x5a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64,
-	0x61, 0x74, 0x61, 0xea, 0x02, 0x0f, 0x5a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x3a, 0x3a, 0x5a,
-	0x65, 0x6e, 0x62, 0x74, 0x63, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x1a,
+	0x27, 0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63,
+	0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x85, 0x01, 0x0a, 0x1b, 0x56, 0x65, 0x72,
+	0x69, 0x66, 0x79, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x49,
+	0x6e, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2e, 0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61,
+	0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e, 0x4d, 0x73, 0x67, 0x56, 0x65, 0x72,
+	0x69, 0x66, 0x79, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x49,
+	0x6e, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x1a, 0x36, 0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61,
+	0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e, 0x4d, 0x73, 0x67, 0x56, 0x65, 0x72,
+	0x69, 0x66, 0x79, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x49,
+	0x6e, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x79, 0x0a, 0x17, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x55, 0x6e, 0x6c, 0x6f, 0x63, 0x6b,
+	0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x2a, 0x2e, 0x7a, 0x72,
+	0x63, 0x68, 0x61, 0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e, 0x4d, 0x73, 0x67,
+	0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x55, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x54, 0x72, 0x61, 0x6e,
+	0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x32, 0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61, 0x69,
+	0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x2e, 0x4d, 0x73, 0x67, 0x53, 0x75, 0x62, 0x6d,
+	0x69, 0x74, 0x55, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0,
+	0x2a, 0x01, 0x42, 0x97, 0x01, 0x0a, 0x12, 0x63, 0x6f, 0x6d, 0x2e, 0x7a, 0x72, 0x63, 0x68, 0x61,
+	0x69, 0x6e, 0x2e, 0x7a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72, 0x6f,
+	0x74, 0x6f, 0x50, 0x01, 0x5a, 0x1f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x73, 0x64, 0x6b, 0x2e,
+	0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x7a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x2f, 0x7a,
+	0x65, 0x6e, 0x62, 0x74, 0x63, 0xa2, 0x02, 0x03, 0x5a, 0x5a, 0x58, 0xaa, 0x02, 0x0e, 0x5a, 0x72,
+	0x63, 0x68, 0x61, 0x69, 0x6e, 0x2e, 0x5a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0xca, 0x02, 0x0e, 0x5a,
+	0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x5c, 0x5a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0xe2, 0x02, 0x1a,
+	0x5a, 0x72, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x5c, 0x5a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x5c, 0x47,
+	0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0f, 0x5a, 0x72, 0x63,
+	0x68, 0x61, 0x69, 0x6e, 0x3a, 0x3a, 0x5a, 0x65, 0x6e, 0x62, 0x74, 0x63, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -3458,22 +3529,22 @@ func file_zrchain_zenbtc_tx_proto_rawDescGZIP() []byte {
 
 var file_zrchain_zenbtc_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_zrchain_zenbtc_tx_proto_goTypes = []interface{}{
-	(*MsgUpdateParams)(nil),                          // 0: zrchain.zenbtc.MsgUpdateParams
-	(*MsgUpdateParamsResponse)(nil),                  // 1: zrchain.zenbtc.MsgUpdateParamsResponse
-	(*MsgVerifyDepositBlockInclusion)(nil),           // 2: zrchain.zenbtc.MsgVerifyDepositBlockInclusion
-	(*MsgVerifyDepositBlockInclusionResponse)(nil),   // 3: zrchain.zenbtc.MsgVerifyDepositBlockInclusionResponse
-	(*MsgSubmitSolanaUnlockTransaction)(nil),         // 4: zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction
-	(*MsgSubmitSolanaUnlockTransactionResponse)(nil), // 5: zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse
-	(*Params)(nil), // 6: zrchain.zenbtc.Params
+	(*MsgUpdateParams)(nil),                        // 0: zrchain.zenbtc.MsgUpdateParams
+	(*MsgUpdateParamsResponse)(nil),                // 1: zrchain.zenbtc.MsgUpdateParamsResponse
+	(*MsgVerifyDepositBlockInclusion)(nil),         // 2: zrchain.zenbtc.MsgVerifyDepositBlockInclusion
+	(*MsgVerifyDepositBlockInclusionResponse)(nil), // 3: zrchain.zenbtc.MsgVerifyDepositBlockInclusionResponse
+	(*MsgSubmitUnlockTransaction)(nil),             // 4: zrchain.zenbtc.MsgSubmitUnlockTransaction
+	(*MsgSubmitUnlockTransactionResponse)(nil),     // 5: zrchain.zenbtc.MsgSubmitUnlockTransactionResponse
+	(*Params)(nil),                                 // 6: zrchain.zenbtc.Params
 }
 var file_zrchain_zenbtc_tx_proto_depIdxs = []int32{
 	6, // 0: zrchain.zenbtc.MsgUpdateParams.params:type_name -> zrchain.zenbtc.Params
 	0, // 1: zrchain.zenbtc.Msg.UpdateParams:input_type -> zrchain.zenbtc.MsgUpdateParams
 	2, // 2: zrchain.zenbtc.Msg.VerifyDepositBlockInclusion:input_type -> zrchain.zenbtc.MsgVerifyDepositBlockInclusion
-	4, // 3: zrchain.zenbtc.Msg.SubmitSolanaUnlockTransaction:input_type -> zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction
+	4, // 3: zrchain.zenbtc.Msg.SubmitUnlockTransaction:input_type -> zrchain.zenbtc.MsgSubmitUnlockTransaction
 	1, // 4: zrchain.zenbtc.Msg.UpdateParams:output_type -> zrchain.zenbtc.MsgUpdateParamsResponse
 	3, // 5: zrchain.zenbtc.Msg.VerifyDepositBlockInclusion:output_type -> zrchain.zenbtc.MsgVerifyDepositBlockInclusionResponse
-	5, // 6: zrchain.zenbtc.Msg.SubmitSolanaUnlockTransaction:output_type -> zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse
+	5, // 6: zrchain.zenbtc.Msg.SubmitUnlockTransaction:output_type -> zrchain.zenbtc.MsgSubmitUnlockTransactionResponse
 	4, // [4:7] is the sub-list for method output_type
 	1, // [1:4] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -3537,7 +3608,7 @@ func file_zrchain_zenbtc_tx_proto_init() {
 			}
 		}
 		file_zrchain_zenbtc_tx_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgSubmitSolanaUnlockTransaction); i {
+			switch v := v.(*MsgSubmitUnlockTransaction); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3549,7 +3620,7 @@ func file_zrchain_zenbtc_tx_proto_init() {
 			}
 		}
 		file_zrchain_zenbtc_tx_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgSubmitSolanaUnlockTransactionResponse); i {
+			switch v := v.(*MsgSubmitUnlockTransactionResponse); i {
 			case 0:
 				return &v.state
 			case 1:

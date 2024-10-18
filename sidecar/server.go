@@ -1,4 +1,4 @@
-package sidecar
+package main
 
 import (
 	"context"
@@ -174,4 +174,106 @@ func (s *oracleService) GetEthereumNonceAtHeight(ctx context.Context, req *api.E
 	return &api.EthereumNonceAtHeightResponse{
 		Nonce: nonce,
 	}, nil
+}
+
+// TODO: clean up stuff we don't need
+func (s *oracleService) GetEthereumTransaction(ctx context.Context, req *api.EthereumTransactionRequest) (*api.EthereumTransactionResponse, error) {
+	txHash := common.HexToHash(req.GetTxHash())
+
+	_, isPending, err := s.oracle.EthClient.TransactionByHash(ctx, txHash)
+	if err != nil {
+		return nil, err
+	}
+
+	chainID, err := s.oracle.EthClient.ChainID(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if chainID != big.NewInt(17000) {
+		return nil, fmt.Errorf("unsupported chain id: %s", chainID.String())
+	}
+
+	// signer := types.LatestSignerForChainID(chainID)
+
+	// fromAddress, err := types.Sender(signer, tx)
+	// if err != nil {
+	// 	return nil, err
+	// }
+
+	// fromAddressHex := fromAddress.Hex()
+
+	var blockNumber uint64
+	// var blockTime uint64
+
+	if !isPending {
+		receipt, err := s.oracle.EthClient.TransactionReceipt(ctx, txHash)
+		if err != nil {
+			return nil, err
+		}
+
+		blockNumber = receipt.BlockNumber.Uint64()
+
+		// block, err := s.oracle.EthClient.BlockByNumber(ctx, receipt.BlockNumber)
+		// if err != nil {
+		// 	return nil, err
+		// }
+
+		// blockTime = block.Time()
+	}
+
+	// var txResponse *api.EthereumTransactionResponse
+
+	// var toAddress string
+	// if tx.To() != nil {
+	// 	toAddress = tx.To().Hex()
+	// } else {
+	// 	toAddress = "" // Contract creation transaction
+	// }
+
+	// switch tx.Type() {
+	// case types.LegacyTxType:
+	// 	legacyTx := &api.EthereumLegacyTransaction{
+	// 		Nonce:       tx.Nonce(),
+	// 		GasPrice:    tx.GasPrice().String(),
+	// 		GasLimit:    tx.Gas(),
+	// 		To:          toAddress,
+	// 		From:        fromAddressHex,
+	// 		Value:       tx.Value().String(),
+	// 		Data:        fmt.Sprintf("0x%x", tx.Data()),
+	// 		BlockHeight: blockNumber,
+	// 		TxHash:      tx.Hash().Hex(),
+	// 		BlockTime:   blockTime,
+	// 	}
+	// 	txResponse = &api.EthereumTransactionResponse{
+	// 		Tx: &api.EthereumTransactionResponse_LegacyTx{
+	// 			LegacyTx: legacyTx,
+	// 		},
+	// 		IsPending: isPending,
+	// 	}
+	// case types.DynamicFeeTxType:
+	// 	eip1559Tx := &api.EthereumEIP1559Transaction{
+	// 		Nonce:                tx.Nonce(),
+	// 		MaxPriorityFeePerGas: tx.GasTipCap().String(),
+	// 		MaxFeePerGas:         tx.GasFeeCap().String(),
+	// 		GasLimit:             tx.Gas(),
+	// 		To:                   toAddress,
+	// 		From:                 fromAddressHex,
+	// 		Value:                tx.Value().String(),
+	// 		Data:                 fmt.Sprintf("0x%x", tx.Data()),
+	// 		BlockHeight:          blockNumber,
+	// 		TxHash:               tx.Hash().Hex(),
+	// 		BlockTime:            blockTime,
+	// 	}
+	// 	txResponse = &api.EthereumTransactionResponse{
+	// 		Tx: &api.EthereumTransactionResponse_Eip1559Tx{
+	// 			Eip1559Tx: eip1559Tx,
+	// 		},
+	// 		IsPending: isPending,
+	// 	}
+	// default:
+	// 	return nil, fmt.Errorf("unsupported transaction type: %d", tx.Type())
+	// }
+
+	return &api.EthereumTransactionResponse{TxHeight: blockNumber}, nil
 }

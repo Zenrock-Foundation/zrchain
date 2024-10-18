@@ -12,7 +12,7 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 		&MsgVerifyDepositBlockInclusion{},
 	)
 	registry.RegisterImplementations((*sdk.Msg)(nil),
-		&MsgSubmitSolanaUnlockTransaction{},
+		&MsgSubmitUnlockTransaction{},
 	)
 	// this line is used by starport scaffolding # 3
 

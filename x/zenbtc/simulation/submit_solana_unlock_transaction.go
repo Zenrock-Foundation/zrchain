@@ -10,7 +10,7 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 )
 
-func SimulateMsgSubmitSolanaUnlockTransaction(
+func SimulateMsgSubmitUnlockTransaction(
 	ak types.AccountKeeper,
 	bk types.BankKeeper,
 	k keeper.Keeper,
@@ -18,12 +18,12 @@ func SimulateMsgSubmitSolanaUnlockTransaction(
 	return func(r *rand.Rand, app *baseapp.BaseApp, ctx sdk.Context, accs []simtypes.Account, chainID string,
 	) (simtypes.OperationMsg, []simtypes.FutureOperation, error) {
 		simAccount, _ := simtypes.RandomAcc(r, accs)
-		msg := &types.MsgSubmitSolanaUnlockTransaction{
+		msg := &types.MsgSubmitUnlockTransaction{
 			Creator: simAccount.Address.String(),
 		}
 
-		// TODO: Handling the SubmitSolanaUnlockTransaction simulation
+		// TODO: Handling the SubmitUnlockTransaction simulation
 
-		return simtypes.NoOpMsg(types.ModuleName, sdk.MsgTypeURL(msg), "SubmitSolanaUnlockTransaction simulation not implemented"), nil, nil
+		return simtypes.NoOpMsg(types.ModuleName, sdk.MsgTypeURL(msg), "SubmitUnlockTransaction simulation not implemented"), nil, nil
 	}
 }

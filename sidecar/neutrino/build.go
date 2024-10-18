@@ -24,7 +24,7 @@ import (
 func buildNeutrinoNode(chainParams chaincfg.Params, logLevel btclog.Level, nodes *map[string]LiteNode) (map[string]LiteNode, error) {
 
 	chainName := chainParams.Name
-	dataDir := "./neutrino_sidecar/neutrino_" + chainName
+	dataDir := "./neutrino/neutrino_" + chainName
 	dbPath := dataDir + "/neutrino_" + chainName + ".db"
 
 	backendLogger := btclog.NewBackend(os.Stdout)
