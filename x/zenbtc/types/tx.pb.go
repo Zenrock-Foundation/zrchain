@@ -262,25 +262,26 @@ func (m *MsgVerifyDepositBlockInclusionResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgVerifyDepositBlockInclusionResponse proto.InternalMessageInfo
 
-type MsgSubmitSolanaUnlockTransaction struct {
+type MsgSubmitUnlockTransaction struct {
 	Creator        string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
-	TxSignature    string `protobuf:"bytes,2,opt,name=tx_signature,json=txSignature,proto3" json:"tx_signature,omitempty"`
-	WithdrawalAddr string `protobuf:"bytes,3,opt,name=withdrawal_addr,json=withdrawalAddr,proto3" json:"withdrawal_addr,omitempty"`
-	Amount         uint64 `protobuf:"varint,4,opt,name=amount,proto3" json:"amount,omitempty"`
+	Chain          string `protobuf:"bytes,2,opt,name=chain,proto3" json:"chain,omitempty"`
+	TxID           string `protobuf:"bytes,3,opt,name=txID,proto3" json:"txID,omitempty"`
+	WithdrawalAddr string `protobuf:"bytes,4,opt,name=withdrawalAddr,proto3" json:"withdrawalAddr,omitempty"`
+	Amount         uint64 `protobuf:"varint,5,opt,name=amount,proto3" json:"amount,omitempty"`
 }
 
-func (m *MsgSubmitSolanaUnlockTransaction) Reset()         { *m = MsgSubmitSolanaUnlockTransaction{} }
-func (m *MsgSubmitSolanaUnlockTransaction) String() string { return proto.CompactTextString(m) }
-func (*MsgSubmitSolanaUnlockTransaction) ProtoMessage()    {}
-func (*MsgSubmitSolanaUnlockTransaction) Descriptor() ([]byte, []int) {
+func (m *MsgSubmitUnlockTransaction) Reset()         { *m = MsgSubmitUnlockTransaction{} }
+func (m *MsgSubmitUnlockTransaction) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitUnlockTransaction) ProtoMessage()    {}
+func (*MsgSubmitUnlockTransaction) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d6ac1a66ced98cca, []int{4}
 }
-func (m *MsgSubmitSolanaUnlockTransaction) XXX_Unmarshal(b []byte) error {
+func (m *MsgSubmitUnlockTransaction) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgSubmitSolanaUnlockTransaction) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgSubmitUnlockTransaction) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgSubmitSolanaUnlockTransaction.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgSubmitUnlockTransaction.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -290,63 +291,68 @@ func (m *MsgSubmitSolanaUnlockTransaction) XXX_Marshal(b []byte, deterministic b
 		return b[:n], nil
 	}
 }
-func (m *MsgSubmitSolanaUnlockTransaction) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgSubmitSolanaUnlockTransaction.Merge(m, src)
+func (m *MsgSubmitUnlockTransaction) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitUnlockTransaction.Merge(m, src)
 }
-func (m *MsgSubmitSolanaUnlockTransaction) XXX_Size() int {
+func (m *MsgSubmitUnlockTransaction) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgSubmitSolanaUnlockTransaction) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgSubmitSolanaUnlockTransaction.DiscardUnknown(m)
+func (m *MsgSubmitUnlockTransaction) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitUnlockTransaction.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgSubmitSolanaUnlockTransaction proto.InternalMessageInfo
+var xxx_messageInfo_MsgSubmitUnlockTransaction proto.InternalMessageInfo
 
-func (m *MsgSubmitSolanaUnlockTransaction) GetCreator() string {
+func (m *MsgSubmitUnlockTransaction) GetCreator() string {
 	if m != nil {
 		return m.Creator
 	}
 	return ""
 }
 
-func (m *MsgSubmitSolanaUnlockTransaction) GetTxSignature() string {
+func (m *MsgSubmitUnlockTransaction) GetChain() string {
 	if m != nil {
-		return m.TxSignature
+		return m.Chain
 	}
 	return ""
 }
 
-func (m *MsgSubmitSolanaUnlockTransaction) GetWithdrawalAddr() string {
+func (m *MsgSubmitUnlockTransaction) GetTxID() string {
+	if m != nil {
+		return m.TxID
+	}
+	return ""
+}
+
+func (m *MsgSubmitUnlockTransaction) GetWithdrawalAddr() string {
 	if m != nil {
 		return m.WithdrawalAddr
 	}
 	return ""
 }
 
-func (m *MsgSubmitSolanaUnlockTransaction) GetAmount() uint64 {
+func (m *MsgSubmitUnlockTransaction) GetAmount() uint64 {
 	if m != nil {
 		return m.Amount
 	}
 	return 0
 }
 
-type MsgSubmitSolanaUnlockTransactionResponse struct {
+type MsgSubmitUnlockTransactionResponse struct {
 }
 
-func (m *MsgSubmitSolanaUnlockTransactionResponse) Reset() {
-	*m = MsgSubmitSolanaUnlockTransactionResponse{}
-}
-func (m *MsgSubmitSolanaUnlockTransactionResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgSubmitSolanaUnlockTransactionResponse) ProtoMessage()    {}
-func (*MsgSubmitSolanaUnlockTransactionResponse) Descriptor() ([]byte, []int) {
+func (m *MsgSubmitUnlockTransactionResponse) Reset()         { *m = MsgSubmitUnlockTransactionResponse{} }
+func (m *MsgSubmitUnlockTransactionResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitUnlockTransactionResponse) ProtoMessage()    {}
+func (*MsgSubmitUnlockTransactionResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d6ac1a66ced98cca, []int{5}
 }
-func (m *MsgSubmitSolanaUnlockTransactionResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgSubmitUnlockTransactionResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgSubmitSolanaUnlockTransactionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgSubmitUnlockTransactionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgSubmitSolanaUnlockTransactionResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgSubmitUnlockTransactionResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -356,73 +362,72 @@ func (m *MsgSubmitSolanaUnlockTransactionResponse) XXX_Marshal(b []byte, determi
 		return b[:n], nil
 	}
 }
-func (m *MsgSubmitSolanaUnlockTransactionResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgSubmitSolanaUnlockTransactionResponse.Merge(m, src)
+func (m *MsgSubmitUnlockTransactionResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitUnlockTransactionResponse.Merge(m, src)
 }
-func (m *MsgSubmitSolanaUnlockTransactionResponse) XXX_Size() int {
+func (m *MsgSubmitUnlockTransactionResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgSubmitSolanaUnlockTransactionResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgSubmitSolanaUnlockTransactionResponse.DiscardUnknown(m)
+func (m *MsgSubmitUnlockTransactionResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitUnlockTransactionResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgSubmitSolanaUnlockTransactionResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgSubmitUnlockTransactionResponse proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*MsgUpdateParams)(nil), "zrchain.zenbtc.MsgUpdateParams")
 	proto.RegisterType((*MsgUpdateParamsResponse)(nil), "zrchain.zenbtc.MsgUpdateParamsResponse")
 	proto.RegisterType((*MsgVerifyDepositBlockInclusion)(nil), "zrchain.zenbtc.MsgVerifyDepositBlockInclusion")
 	proto.RegisterType((*MsgVerifyDepositBlockInclusionResponse)(nil), "zrchain.zenbtc.MsgVerifyDepositBlockInclusionResponse")
-	proto.RegisterType((*MsgSubmitSolanaUnlockTransaction)(nil), "zrchain.zenbtc.MsgSubmitSolanaUnlockTransaction")
-	proto.RegisterType((*MsgSubmitSolanaUnlockTransactionResponse)(nil), "zrchain.zenbtc.MsgSubmitSolanaUnlockTransactionResponse")
+	proto.RegisterType((*MsgSubmitUnlockTransaction)(nil), "zrchain.zenbtc.MsgSubmitUnlockTransaction")
+	proto.RegisterType((*MsgSubmitUnlockTransactionResponse)(nil), "zrchain.zenbtc.MsgSubmitUnlockTransactionResponse")
 }
 
 func init() { proto.RegisterFile("zrchain/zenbtc/tx.proto", fileDescriptor_d6ac1a66ced98cca) }
 
 var fileDescriptor_d6ac1a66ced98cca = []byte{
-	// 658 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xb1, 0x4f, 0xdb, 0x4e,
-	0x14, 0xce, 0x11, 0x12, 0x7e, 0xb9, 0x44, 0xa0, 0x9f, 0x45, 0xc1, 0x04, 0x11, 0x4c, 0x86, 0x62,
-	0x45, 0x6a, 0xdc, 0x42, 0x85, 0x28, 0x5b, 0xa3, 0x0e, 0xed, 0x90, 0xaa, 0x72, 0xa0, 0xaa, 0xba,
-	0x44, 0x17, 0xfb, 0x70, 0x4e, 0xc4, 0x77, 0xd6, 0xdd, 0x85, 0x18, 0xa6, 0xaa, 0x52, 0xa5, 0xaa,
-	0x5d, 0xfa, 0x67, 0x74, 0xaa, 0x18, 0xba, 0xf4, 0x3f, 0x60, 0x44, 0x9d, 0x3a, 0x55, 0x15, 0x0c,
-	0xfc, 0x13, 0x1d, 0x2a, 0x9f, 0x6d, 0x22, 0x22, 0x64, 0xc4, 0x92, 0xf8, 0x7d, 0xef, 0x7b, 0xef,
-	0xbe, 0xef, 0xf9, 0xf9, 0xe0, 0xe2, 0x31, 0x77, 0xfa, 0x88, 0x50, 0xeb, 0x18, 0xd3, 0x9e, 0x74,
-	0x2c, 0x19, 0x36, 0x03, 0xce, 0x24, 0xd3, 0x66, 0x93, 0x44, 0x33, 0x4e, 0x54, 0xff, 0x47, 0x3e,
-	0xa1, 0xcc, 0x52, 0xbf, 0x31, 0xa5, 0xba, 0xe8, 0x30, 0xe1, 0x33, 0x61, 0xf9, 0xc2, 0xb3, 0x0e,
-	0x1f, 0x45, 0x7f, 0x49, 0x62, 0x29, 0x4e, 0x74, 0x55, 0x64, 0xc5, 0x41, 0x92, 0x9a, 0xf7, 0x98,
-	0xc7, 0x62, 0x3c, 0x7a, 0x4a, 0xd0, 0xe5, 0x09, 0x15, 0x01, 0xe2, 0xc8, 0x4f, 0x4a, 0xea, 0x3f,
-	0x00, 0x9c, 0x6b, 0x0b, 0x6f, 0x2f, 0x70, 0x91, 0xc4, 0xaf, 0x54, 0x46, 0xdb, 0x82, 0x25, 0x34,
-	0x94, 0x7d, 0xc6, 0x89, 0x3c, 0xd2, 0x81, 0x01, 0xcc, 0x52, 0x4b, 0xff, 0xf9, 0xfd, 0xc1, 0x7c,
-	0x72, 0xd6, 0x53, 0xd7, 0xe5, 0x58, 0x88, 0x8e, 0xe4, 0x84, 0x7a, 0xf6, 0x98, 0xaa, 0x3d, 0x81,
-	0xc5, 0xb8, 0xb7, 0x3e, 0x65, 0x00, 0xb3, 0xbc, 0xb1, 0xd0, 0xbc, 0x6e, 0xb3, 0x19, 0xf7, 0x6f,
-	0x95, 0x4e, 0x7f, 0xaf, 0xe6, 0xbe, 0x5e, 0x9e, 0x34, 0x80, 0x9d, 0x14, 0xec, 0x6c, 0xbe, 0xbf,
-	0x3c, 0x69, 0x8c, 0x5b, 0x7d, 0xba, 0x3c, 0x69, 0x18, 0xa9, 0xec, 0x30, 0x15, 0x3e, 0xa1, 0xb3,
-	0xbe, 0x04, 0x17, 0x27, 0x20, 0x1b, 0x8b, 0x80, 0x51, 0x81, 0xeb, 0x1f, 0xa7, 0x60, 0xad, 0x2d,
-	0xbc, 0xd7, 0x98, 0x93, 0xfd, 0xa3, 0x67, 0x38, 0x60, 0x82, 0xc8, 0xd6, 0x80, 0x39, 0x07, 0x2f,
-	0xa8, 0x33, 0x18, 0x0a, 0xc2, 0xa8, 0xa6, 0xc3, 0x19, 0x87, 0x63, 0x24, 0x19, 0x8f, 0x3d, 0xda,
-	0x69, 0xa8, 0xad, 0x40, 0xa8, 0x4e, 0xee, 0x52, 0xe4, 0x63, 0xe5, 0xa5, 0x64, 0x97, 0x14, 0xf2,
-	0x12, 0xf9, 0x58, 0x5b, 0x83, 0x95, 0x5e, 0xd4, 0xaa, 0xdb, 0xc7, 0xc4, 0xeb, 0x4b, 0x3d, 0x6f,
-	0x00, 0x33, 0x6f, 0x97, 0x15, 0xf6, 0x5c, 0x41, 0xda, 0x3d, 0x58, 0xe4, 0x68, 0xd4, 0x95, 0xa1,
-	0x3e, 0xad, 0xaa, 0x0b, 0x1c, 0x8d, 0x76, 0x43, 0x6d, 0x1e, 0x16, 0x08, 0x75, 0x71, 0xa8, 0x17,
-	0x0c, 0x60, 0x16, 0xec, 0x38, 0x88, 0xd0, 0x80, 0x33, 0xb6, 0xaf, 0x17, 0x8d, 0x7c, 0xc4, 0x55,
-	0x41, 0x74, 0x8a, 0x1b, 0xeb, 0xee, 0x22, 0xd7, 0xe5, 0xfa, 0x8c, 0x6a, 0x54, 0x4e, 0xb0, 0xe8,
-	0x1d, 0x68, 0x0b, 0xb0, 0x88, 0x7c, 0x36, 0xa4, 0x52, 0xff, 0xcf, 0x00, 0xe6, 0xb4, 0x9d, 0x44,
-	0x3b, 0x95, 0x68, 0x98, 0xa9, 0x9b, 0xba, 0x09, 0xef, 0x67, 0x4f, 0xe2, 0x6a, 0x68, 0xdf, 0x00,
-	0x34, 0xda, 0xc2, 0xeb, 0x0c, 0x7b, 0x3e, 0x91, 0x1d, 0x36, 0x40, 0x14, 0xed, 0xd1, 0x88, 0xba,
-	0xcb, 0x11, 0x15, 0xc8, 0x91, 0xd9, 0x63, 0x5b, 0x83, 0x15, 0x19, 0x76, 0x05, 0xf1, 0x28, 0x92,
-	0x43, 0x9e, 0x0e, 0xae, 0x2c, 0xc3, 0x4e, 0x0a, 0x69, 0xeb, 0x70, 0x6e, 0x44, 0x64, 0xdf, 0xe5,
-	0x68, 0x84, 0x06, 0xb1, 0xaf, 0xbc, 0x62, 0xcd, 0x8e, 0xe1, 0x09, 0x6b, 0xd3, 0x19, 0xd6, 0x1a,
-	0xd0, 0xbc, 0x4d, 0x6f, 0x6a, 0x6e, 0xe3, 0xef, 0x14, 0xcc, 0xb7, 0x85, 0xa7, 0xbd, 0x81, 0x95,
-	0x6b, 0xcb, 0xbe, 0x3a, 0xb9, 0xa4, 0x13, 0x2b, 0x55, 0x5d, 0xbf, 0x85, 0x90, 0x9e, 0xa0, 0x7d,
-	0x00, 0x70, 0x39, 0x6b, 0xe1, 0x9a, 0x37, 0x34, 0xca, 0xe0, 0x57, 0xb7, 0xee, 0xc6, 0xbf, 0xd2,
-	0xf1, 0x19, 0xc0, 0x95, 0xec, 0x77, 0xf8, 0xf0, 0x86, 0xce, 0x99, 0x15, 0xd5, 0xed, 0xbb, 0x56,
-	0xa4, 0x6a, 0xaa, 0x85, 0x77, 0xd1, 0x87, 0xde, 0xb2, 0x4f, 0xcf, 0x6b, 0xe0, 0xec, 0xbc, 0x06,
-	0xfe, 0x9c, 0xd7, 0xc0, 0x97, 0x8b, 0x5a, 0xee, 0xec, 0xa2, 0x96, 0xfb, 0x75, 0x51, 0xcb, 0xbd,
-	0xdd, 0xf6, 0x88, 0xec, 0x0f, 0x7b, 0x4d, 0x87, 0xf9, 0xd1, 0x87, 0xce, 0x99, 0x73, 0x30, 0x40,
-	0x3d, 0x91, 0x3e, 0x5b, 0xe9, 0x35, 0x70, 0xf8, 0x78, 0x7c, 0x13, 0xc8, 0xa3, 0x00, 0x8b, 0x5e,
-	0x51, 0x5d, 0x61, 0x9b, 0xff, 0x02, 0x00, 0x00, 0xff, 0xff, 0x48, 0x53, 0xa7, 0x9e, 0x67, 0x05,
-	0x00, 0x00,
+	// 656 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0x41, 0x4f, 0x13, 0x41,
+	0x14, 0xee, 0x50, 0xb6, 0xd8, 0x81, 0x60, 0x9c, 0x54, 0xba, 0x2c, 0x71, 0x59, 0x1b, 0x83, 0x4d,
+	0x13, 0xba, 0x11, 0x0c, 0x46, 0x6e, 0x36, 0xc4, 0xc8, 0xa1, 0x46, 0x17, 0x30, 0x86, 0x4b, 0x33,
+	0xdd, 0x1d, 0xb6, 0x1b, 0xd8, 0x99, 0xcd, 0xcc, 0x94, 0xb6, 0x9c, 0x8c, 0x89, 0x89, 0xf1, 0xe4,
+	0xcf, 0xf0, 0x64, 0x38, 0x78, 0xf1, 0x1f, 0x70, 0x24, 0x9e, 0x3c, 0x19, 0x03, 0x07, 0xe2, 0xbf,
+	0x30, 0x3b, 0xbb, 0x0b, 0xd2, 0x40, 0xd5, 0x4b, 0xbb, 0xef, 0x7b, 0xdf, 0xbc, 0xf7, 0xbe, 0x6f,
+	0xdf, 0x2c, 0x2c, 0x1f, 0x70, 0xb7, 0x83, 0x03, 0x6a, 0x1f, 0x10, 0xda, 0x96, 0xae, 0x2d, 0xfb,
+	0xf5, 0x88, 0x33, 0xc9, 0xd0, 0x74, 0x9a, 0xa8, 0x27, 0x09, 0xe3, 0x16, 0x0e, 0x03, 0xca, 0x6c,
+	0xf5, 0x9b, 0x50, 0x8c, 0xb2, 0xcb, 0x44, 0xc8, 0x84, 0x1d, 0x0a, 0xdf, 0xde, 0x7f, 0x10, 0xff,
+	0xa5, 0x89, 0xd9, 0x24, 0xd1, 0x52, 0x91, 0x9d, 0x04, 0x69, 0xaa, 0xe4, 0x33, 0x9f, 0x25, 0x78,
+	0xfc, 0x94, 0xa2, 0x73, 0x43, 0x53, 0x44, 0x98, 0xe3, 0x30, 0x3d, 0x52, 0xf9, 0x0a, 0xe0, 0xcd,
+	0xa6, 0xf0, 0xb7, 0x22, 0x0f, 0x4b, 0xf2, 0x42, 0x65, 0xd0, 0x0a, 0x2c, 0xe2, 0xae, 0xec, 0x30,
+	0x1e, 0xc8, 0x81, 0x0e, 0x2c, 0x50, 0x2d, 0x36, 0xf4, 0x6f, 0x5f, 0x16, 0x4b, 0x69, 0xaf, 0x27,
+	0x9e, 0xc7, 0x89, 0x10, 0x1b, 0x92, 0x07, 0xd4, 0x77, 0x2e, 0xa8, 0xe8, 0x31, 0x2c, 0x24, 0xb5,
+	0xf5, 0x31, 0x0b, 0x54, 0x27, 0x97, 0x66, 0xea, 0x97, 0x65, 0xd6, 0x93, 0xfa, 0x8d, 0xe2, 0xd1,
+	0x8f, 0xf9, 0xdc, 0xa7, 0xb3, 0xc3, 0x1a, 0x70, 0xd2, 0x03, 0xab, 0xcb, 0x6f, 0xcf, 0x0e, 0x6b,
+	0x17, 0xa5, 0x3e, 0x9c, 0x1d, 0xd6, 0xac, 0x6c, 0xec, 0x7e, 0x36, 0xf8, 0xd0, 0x9c, 0x95, 0x59,
+	0x58, 0x1e, 0x82, 0x1c, 0x22, 0x22, 0x46, 0x05, 0xa9, 0xbc, 0x1f, 0x83, 0x66, 0x53, 0xf8, 0xaf,
+	0x08, 0x0f, 0x76, 0x06, 0x6b, 0x24, 0x62, 0x22, 0x90, 0x8d, 0x3d, 0xe6, 0xee, 0xae, 0x53, 0x77,
+	0xaf, 0x2b, 0x02, 0x46, 0x91, 0x0e, 0x27, 0x5c, 0x4e, 0xb0, 0x64, 0x3c, 0xd1, 0xe8, 0x64, 0x21,
+	0xba, 0x03, 0xa1, 0xea, 0xdc, 0xa2, 0x38, 0x24, 0x4a, 0x4b, 0xd1, 0x29, 0x2a, 0xe4, 0x39, 0x0e,
+	0x09, 0xba, 0x0b, 0xa7, 0xda, 0x71, 0xa9, 0x56, 0x87, 0x04, 0x7e, 0x47, 0xea, 0x79, 0x0b, 0x54,
+	0xf3, 0xce, 0xa4, 0xc2, 0x9e, 0x29, 0x08, 0xdd, 0x86, 0x05, 0x8e, 0x7b, 0x2d, 0xd9, 0xd7, 0xc7,
+	0xd5, 0x69, 0x8d, 0xe3, 0xde, 0x66, 0x1f, 0x95, 0xa0, 0x16, 0x50, 0x8f, 0xf4, 0x75, 0xcd, 0x02,
+	0x55, 0xcd, 0x49, 0x82, 0x18, 0x8d, 0x38, 0x63, 0x3b, 0x7a, 0xc1, 0xca, 0xc7, 0x5c, 0x15, 0xc4,
+	0x5d, 0xbc, 0x64, 0xee, 0x16, 0xf6, 0x3c, 0xae, 0x4f, 0xa8, 0x42, 0x93, 0x29, 0x16, 0xbf, 0x03,
+	0x34, 0x03, 0x0b, 0x38, 0x64, 0x5d, 0x2a, 0xf5, 0x1b, 0x16, 0xa8, 0x8e, 0x3b, 0x69, 0xb4, 0x3a,
+	0x15, 0x9b, 0x99, 0xa9, 0xa9, 0x54, 0xe1, 0xc2, 0x68, 0x27, 0xce, 0x4d, 0xfb, 0x0c, 0xa0, 0xd1,
+	0x14, 0xfe, 0x46, 0xb7, 0x1d, 0x06, 0x72, 0x8b, 0xc6, 0xa4, 0x4d, 0x8e, 0xa9, 0xc0, 0xae, 0x1c,
+	0x6d, 0x58, 0x09, 0x6a, 0xca, 0x9e, 0xd4, 0xab, 0x24, 0x40, 0x08, 0x8e, 0xcb, 0xfe, 0xfa, 0x9a,
+	0xf2, 0xa7, 0xe8, 0xa8, 0x67, 0xb4, 0x00, 0xa7, 0x7b, 0x81, 0xec, 0x78, 0x1c, 0xf7, 0xf0, 0x5e,
+	0x2c, 0x22, 0x35, 0x68, 0x08, 0xfd, 0x43, 0x9a, 0x36, 0x42, 0xda, 0x3d, 0x58, 0xb9, 0x7e, 0xde,
+	0x4c, 0xd6, 0xd2, 0xaf, 0x31, 0x98, 0x6f, 0x0a, 0x1f, 0xbd, 0x86, 0x53, 0x97, 0xd6, 0x7c, 0x7e,
+	0x78, 0x3d, 0x87, 0x96, 0xc9, 0xb8, 0xff, 0x17, 0x42, 0xd6, 0x01, 0xbd, 0x03, 0x70, 0x6e, 0xd4,
+	0xaa, 0xd5, 0xaf, 0x28, 0x34, 0x82, 0x6f, 0xac, 0xfc, 0x1f, 0xff, 0x7c, 0x8e, 0x01, 0x2c, 0x5f,
+	0xf7, 0xf2, 0x6a, 0x57, 0x94, 0xbc, 0x86, 0x6b, 0x2c, 0xfd, 0x3b, 0x37, 0x6b, 0x6d, 0x68, 0x6f,
+	0xe2, 0xfb, 0xdc, 0x78, 0x79, 0x74, 0x62, 0x82, 0xe3, 0x13, 0x13, 0xfc, 0x3c, 0x31, 0xc1, 0xc7,
+	0x53, 0x33, 0x77, 0x7c, 0x6a, 0xe6, 0xbe, 0x9f, 0x9a, 0xb9, 0xed, 0x47, 0x7e, 0x20, 0x3b, 0xdd,
+	0x76, 0xdd, 0x65, 0xa1, 0xbd, 0x4d, 0x28, 0x67, 0xee, 0xee, 0xe2, 0x53, 0xd6, 0xa5, 0x1e, 0x8e,
+	0xeb, 0xd8, 0xd9, 0x65, 0xdf, 0x7f, 0x78, 0x71, 0xdf, 0xe5, 0x20, 0x22, 0xa2, 0x5d, 0x50, 0x1f,
+	0xaa, 0xe5, 0xdf, 0x01, 0x00, 0x00, 0xff, 0xff, 0x5d, 0x1e, 0x1a, 0x37, 0x4d, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -441,7 +446,7 @@ type MsgClient interface {
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
 	VerifyDepositBlockInclusion(ctx context.Context, in *MsgVerifyDepositBlockInclusion, opts ...grpc.CallOption) (*MsgVerifyDepositBlockInclusionResponse, error)
-	SubmitSolanaUnlockTransaction(ctx context.Context, in *MsgSubmitSolanaUnlockTransaction, opts ...grpc.CallOption) (*MsgSubmitSolanaUnlockTransactionResponse, error)
+	SubmitUnlockTransaction(ctx context.Context, in *MsgSubmitUnlockTransaction, opts ...grpc.CallOption) (*MsgSubmitUnlockTransactionResponse, error)
 }
 
 type msgClient struct {
@@ -470,9 +475,9 @@ func (c *msgClient) VerifyDepositBlockInclusion(ctx context.Context, in *MsgVeri
 	return out, nil
 }
 
-func (c *msgClient) SubmitSolanaUnlockTransaction(ctx context.Context, in *MsgSubmitSolanaUnlockTransaction, opts ...grpc.CallOption) (*MsgSubmitSolanaUnlockTransactionResponse, error) {
-	out := new(MsgSubmitSolanaUnlockTransactionResponse)
-	err := c.cc.Invoke(ctx, "/zrchain.zenbtc.Msg/SubmitSolanaUnlockTransaction", in, out, opts...)
+func (c *msgClient) SubmitUnlockTransaction(ctx context.Context, in *MsgSubmitUnlockTransaction, opts ...grpc.CallOption) (*MsgSubmitUnlockTransactionResponse, error) {
+	out := new(MsgSubmitUnlockTransactionResponse)
+	err := c.cc.Invoke(ctx, "/zrchain.zenbtc.Msg/SubmitUnlockTransaction", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -485,7 +490,7 @@ type MsgServer interface {
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
 	VerifyDepositBlockInclusion(context.Context, *MsgVerifyDepositBlockInclusion) (*MsgVerifyDepositBlockInclusionResponse, error)
-	SubmitSolanaUnlockTransaction(context.Context, *MsgSubmitSolanaUnlockTransaction) (*MsgSubmitSolanaUnlockTransactionResponse, error)
+	SubmitUnlockTransaction(context.Context, *MsgSubmitUnlockTransaction) (*MsgSubmitUnlockTransactionResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -498,8 +503,8 @@ func (*UnimplementedMsgServer) UpdateParams(ctx context.Context, req *MsgUpdateP
 func (*UnimplementedMsgServer) VerifyDepositBlockInclusion(ctx context.Context, req *MsgVerifyDepositBlockInclusion) (*MsgVerifyDepositBlockInclusionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyDepositBlockInclusion not implemented")
 }
-func (*UnimplementedMsgServer) SubmitSolanaUnlockTransaction(ctx context.Context, req *MsgSubmitSolanaUnlockTransaction) (*MsgSubmitSolanaUnlockTransactionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SubmitSolanaUnlockTransaction not implemented")
+func (*UnimplementedMsgServer) SubmitUnlockTransaction(ctx context.Context, req *MsgSubmitUnlockTransaction) (*MsgSubmitUnlockTransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitUnlockTransaction not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -542,20 +547,20 @@ func _Msg_VerifyDepositBlockInclusion_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_SubmitSolanaUnlockTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgSubmitSolanaUnlockTransaction)
+func _Msg_SubmitUnlockTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgSubmitUnlockTransaction)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).SubmitSolanaUnlockTransaction(ctx, in)
+		return srv.(MsgServer).SubmitUnlockTransaction(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zrchain.zenbtc.Msg/SubmitSolanaUnlockTransaction",
+		FullMethod: "/zrchain.zenbtc.Msg/SubmitUnlockTransaction",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).SubmitSolanaUnlockTransaction(ctx, req.(*MsgSubmitSolanaUnlockTransaction))
+		return srv.(MsgServer).SubmitUnlockTransaction(ctx, req.(*MsgSubmitUnlockTransaction))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -574,8 +579,8 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Msg_VerifyDepositBlockInclusion_Handler,
 		},
 		{
-			MethodName: "SubmitSolanaUnlockTransaction",
-			Handler:    _Msg_SubmitSolanaUnlockTransaction_Handler,
+			MethodName: "SubmitUnlockTransaction",
+			Handler:    _Msg_SubmitUnlockTransaction_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -743,7 +748,7 @@ func (m *MsgVerifyDepositBlockInclusionResponse) MarshalToSizedBuffer(dAtA []byt
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgSubmitSolanaUnlockTransaction) Marshal() (dAtA []byte, err error) {
+func (m *MsgSubmitUnlockTransaction) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -753,12 +758,12 @@ func (m *MsgSubmitSolanaUnlockTransaction) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgSubmitSolanaUnlockTransaction) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgSubmitUnlockTransaction) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgSubmitSolanaUnlockTransaction) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgSubmitUnlockTransaction) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -766,19 +771,26 @@ func (m *MsgSubmitSolanaUnlockTransaction) MarshalToSizedBuffer(dAtA []byte) (in
 	if m.Amount != 0 {
 		i = encodeVarintTx(dAtA, i, uint64(m.Amount))
 		i--
-		dAtA[i] = 0x20
+		dAtA[i] = 0x28
 	}
 	if len(m.WithdrawalAddr) > 0 {
 		i -= len(m.WithdrawalAddr)
 		copy(dAtA[i:], m.WithdrawalAddr)
 		i = encodeVarintTx(dAtA, i, uint64(len(m.WithdrawalAddr)))
 		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.TxID) > 0 {
+		i -= len(m.TxID)
+		copy(dAtA[i:], m.TxID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.TxID)))
+		i--
 		dAtA[i] = 0x1a
 	}
-	if len(m.TxSignature) > 0 {
-		i -= len(m.TxSignature)
-		copy(dAtA[i:], m.TxSignature)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.TxSignature)))
+	if len(m.Chain) > 0 {
+		i -= len(m.Chain)
+		copy(dAtA[i:], m.Chain)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Chain)))
 		i--
 		dAtA[i] = 0x12
 	}
@@ -792,7 +804,7 @@ func (m *MsgSubmitSolanaUnlockTransaction) MarshalToSizedBuffer(dAtA []byte) (in
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgSubmitSolanaUnlockTransactionResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgSubmitUnlockTransactionResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -802,12 +814,12 @@ func (m *MsgSubmitSolanaUnlockTransactionResponse) Marshal() (dAtA []byte, err e
 	return dAtA[:n], nil
 }
 
-func (m *MsgSubmitSolanaUnlockTransactionResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgSubmitUnlockTransactionResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgSubmitSolanaUnlockTransactionResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgSubmitUnlockTransactionResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -899,7 +911,7 @@ func (m *MsgVerifyDepositBlockInclusionResponse) Size() (n int) {
 	return n
 }
 
-func (m *MsgSubmitSolanaUnlockTransaction) Size() (n int) {
+func (m *MsgSubmitUnlockTransaction) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -909,7 +921,11 @@ func (m *MsgSubmitSolanaUnlockTransaction) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
-	l = len(m.TxSignature)
+	l = len(m.Chain)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.TxID)
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
@@ -923,7 +939,7 @@ func (m *MsgSubmitSolanaUnlockTransaction) Size() (n int) {
 	return n
 }
 
-func (m *MsgSubmitSolanaUnlockTransactionResponse) Size() (n int) {
+func (m *MsgSubmitUnlockTransactionResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1420,7 +1436,7 @@ func (m *MsgVerifyDepositBlockInclusionResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgSubmitSolanaUnlockTransaction) Unmarshal(dAtA []byte) error {
+func (m *MsgSubmitUnlockTransaction) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1443,10 +1459,10 @@ func (m *MsgSubmitSolanaUnlockTransaction) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgSubmitSolanaUnlockTransaction: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgSubmitUnlockTransaction: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgSubmitSolanaUnlockTransaction: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgSubmitUnlockTransaction: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1483,7 +1499,7 @@ func (m *MsgSubmitSolanaUnlockTransaction) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field TxSignature", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Chain", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1511,9 +1527,41 @@ func (m *MsgSubmitSolanaUnlockTransaction) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.TxSignature = string(dAtA[iNdEx:postIndex])
+			m.Chain = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TxID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.TxID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field WithdrawalAddr", wireType)
 			}
@@ -1545,7 +1593,7 @@ func (m *MsgSubmitSolanaUnlockTransaction) Unmarshal(dAtA []byte) error {
 			}
 			m.WithdrawalAddr = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 4:
+		case 5:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Amount", wireType)
 			}
@@ -1585,7 +1633,7 @@ func (m *MsgSubmitSolanaUnlockTransaction) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgSubmitSolanaUnlockTransactionResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgSubmitUnlockTransactionResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1608,10 +1656,10 @@ func (m *MsgSubmitSolanaUnlockTransactionResponse) Unmarshal(dAtA []byte) error 
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgSubmitSolanaUnlockTransactionResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgSubmitUnlockTransactionResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgSubmitSolanaUnlockTransactionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgSubmitUnlockTransactionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

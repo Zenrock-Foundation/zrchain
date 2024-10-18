@@ -12,6 +12,7 @@ service SidecarService {
   rpc GetSidecarStateByEthHeight(SidecarStateByEthHeightRequest) returns (SidecarStateResponse) {}
   rpc GetBitcoinBlockHeaderByHeight(BitcoinBlockHeaderByHeightRequest) returns (BitcoinBlockHeaderResponse) {}
   rpc GetLatestBitcoinBlockHeader(LatestBitcoinBlockHeaderRequest) returns (BitcoinBlockHeaderResponse) {}
+  rpc GetEthereumTransaction(EthereumTransactionRequest) returns (EthereumTransactionResponse) {}
   rpc GetSolanaTransaction(SolanaTransactionRequest) returns (SolanaTransactionResponse) {}
   rpc GetEthereumNonceAtHeight(EthereumNonceAtHeightRequest) returns (EthereumNonceAtHeightResponse) {}
 }
@@ -72,4 +73,12 @@ message EthereumNonceAtHeightRequest {
 
 message EthereumNonceAtHeightResponse {
   uint64 Nonce = 1;
+}
+
+message EthereumTransactionRequest {
+  string TxHash = 1;
+}
+
+message EthereumTransactionResponse {
+  uint64 TxHeight = 1;
 }

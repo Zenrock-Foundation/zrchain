@@ -70,7 +70,7 @@ func (k *Keeper) constructVoteExtension(ctx context.Context, height int64, oracl
 		return VoteExtension{}, err
 	}
 
-	solanaTxSlot, err := k.lookupSolanaTx(ctx)
+	chain, txHeight, err := k.lookupNextUnlockTx(ctx)
 	if err != nil {
 		return VoteExtension{}, err
 	}
@@ -85,14 +85,22 @@ func (k *Keeper) constructVoteExtension(ctx context.Context, height int64, oracl
 		ROCKUSDPrice:       oracleData.ROCKUSDPrice,
 		ETHUSDPrice:        oracleData.ETHUSDPrice,
 		AVSDelegationsHash: avsDelegationsHash[:],
+		BtcBlockHeight:     bitcoinData.BlockHeight,
+		BtcMerkleRoot:      bitcoinData.BlockHeader.MerkleRoot,
 		EthBlockHeight:     oracleData.EthBlockHeight,
 		EthBlockHash:       oracleData.EthBlockHash,
 		EthGasPrice:        oracleData.EthGasPrice,
 		EthGasLimit:        oracleData.EthGasLimit,
-		BtcBlockHeight:     bitcoinData.BlockHeight,
-		BtcMerkleRoot:      bitcoinData.BlockHeader.MerkleRoot,
-		SolanaTxSlot:       solanaTxSlot,
 		RequestedEthNonce:  nonce,
+		EthTxHeight:        0,
+		SolanaTxSlot:       0,
+	}
+
+	switch chain {
+	case "eth":
+		voteExt.EthTxHeight = txHeight
+	case "sol":
+		voteExt.SolanaTxSlot = txHeight
 	}
 
 	return voteExt, nil
@@ -241,7 +249,7 @@ func (k *Keeper) PreBlocker(ctx sdk.Context, req *abci.RequestFinalizeBlock) err
 
 	k.storeBitcoinBlockHeader(ctx, oracleData)
 
-	k.setConfirmedSolanaUnlockTx(ctx, oracleData)
+	k.setConfirmedUnlockTx(ctx, oracleData)
 
 	k.createMintTransaction(ctx, oracleData)
 
@@ -265,6 +273,7 @@ func (k *Keeper) getValidatedOracleData(ctx context.Context, voteExt VoteExtensi
 
 	oracleData.BtcBlockHeight = bitcoinData.BlockHeight
 	oracleData.BtcBlockHeader = *bitcoinData.BlockHeader
+	oracleData.EthTxHeight = voteExt.EthTxHeight
 	oracleData.SolanaTxSlot = voteExt.SolanaTxSlot
 	oracleData.RequestedEthNonce = voteExt.RequestedEthNonce
 
@@ -408,20 +417,35 @@ func (k *Keeper) storeBitcoinBlockHeader(ctx sdk.Context, oracleData OracleData)
 	}
 }
 
-func (k *Keeper) setConfirmedSolanaUnlockTx(ctx sdk.Context, oracleData OracleData) {
-	if oracleData.SolanaTxSlot != 0 {
-		solanaTxSignature, solanaWithdrawalInfo, err := k.nextUnconfirmedSolanaTx(ctx)
-		if err != nil {
-			k.Logger(ctx).Error("error getting next solana tx", "err", err)
-			return
-		}
-		if err := k.ConfirmedSolanaUnlockTxs.Set(ctx, solanaTxSignature, solanaWithdrawalInfo); err != nil {
-			k.Logger(ctx).Error("error setting confirmed Solana tx", "slot", oracleData.SolanaTxSlot, "err", err)
-			return
-		}
-		if err := k.UnconfirmedSolanaUnlockTxs.Remove(ctx, solanaTxSignature); err != nil {
-			k.Logger(ctx).Error("error removing unconfirmed Solana tx", "slot", oracleData.SolanaTxSlot, "err", err)
-		}
+func (k *Keeper) setConfirmedUnlockTx(ctx sdk.Context, oracleData OracleData) {
+	chain, txID, withdrawalInfo, totalTxs, err := k.nextUnconfirmedUnlockTx(ctx)
+	if err != nil {
+		k.Logger(ctx).Error("error getting next unconfirmed unlock tx", "err", err)
+		return
+	}
+	if totalTxs == 0 {
+		return
+	}
+	if chain == "" || txID == "" {
+		k.Logger(ctx).Error("malformed unconfirmed unlock tx", "chain", chain, "txID", txID)
+		return
+	}
+
+	if chain == "eth" && oracleData.EthTxHeight == 0 {
+		k.Logger(ctx).Debug("no nonce returned for tx", "chain", chain, "txID", txID)
+		return
+	}
+	if chain == "sol" && oracleData.SolanaTxSlot == 0 {
+		k.Logger(ctx).Debug("no slot returned for tx", "chain", chain, "txID", txID)
+		return
+	}
+
+	if err := k.ConfirmedUnlockTxs.Set(ctx, collections.Join(chain, txID), withdrawalInfo); err != nil {
+		k.Logger(ctx).Error("error setting confirmed unlock tx", "chain", chain, "txID", txID, "err", err)
+		return
+	}
+	if err := k.UnconfirmedUnlockTxs.Remove(ctx, collections.Join(chain, txID)); err != nil {
+		k.Logger(ctx).Error("error removing unconfirmed unlock tx", "chain", chain, "txID", txID, "err", err)
 	}
 }
 
@@ -533,45 +557,6 @@ func (k *Keeper) recordNonVotingValidators(ctx sdk.Context, req *abci.RequestFin
 	}
 }
 
-func (k *Keeper) lookupSolanaTx(ctx context.Context) (uint64, error) {
-	solanaTxSignature, solanaWithdrawalInfo, err := k.nextUnconfirmedSolanaTx(ctx)
-	if err != nil {
-		return 0, err
-	}
-
-	if solanaTxSignature == "" {
-		return 0, nil
-	}
-
-	return k.querySidecarForSolanaTx(ctx, solanaTxSignature, solanaWithdrawalInfo)
-}
-
-func (k *Keeper) lookupEthereumNonce(ctx context.Context) (uint64, error) {
-	nonceHeight, err := k.nextRequestedEthereumNonceHeight(ctx)
-	if err != nil {
-		return 0, fmt.Errorf("error getting next requested Ethereum nonce height: %w", err)
-	}
-
-	if nonceHeight == 0 {
-		return 0, nil
-	}
-
-	addr, err := k.getZenBTCMinterAddressEVM(ctx)
-	if err != nil {
-		return 0, fmt.Errorf("error getting ZenBTC minter address: %w", err)
-	}
-
-	nonceResp, err := k.sidecarClient.GetEthereumNonceAtHeight(ctx, &sidecar.EthereumNonceAtHeightRequest{
-		Address: addr,
-		Height:  nonceHeight,
-	})
-	if err != nil {
-		return 0, fmt.Errorf("error fetching Ethereum nonce: %w", err)
-	}
-
-	return nonceResp.Nonce, nil
-}
-
 func (k *Keeper) validateOracleData(voteExt VoteExtension, oracleData *OracleData) error {
 	avsDelegationsHash, err := deriveAVSContractStateHash(oracleData.AVSDelegationsMap)
 	if err != nil {
@@ -612,6 +597,10 @@ func (k *Keeper) validateOracleData(voteExt VoteExtension, oracleData *OracleDat
 
 	if voteExt.BtcMerkleRoot != oracleData.BtcBlockHeader.MerkleRoot {
 		return fmt.Errorf("bitcoin merkle root mismatch, expected %x, got %x", voteExt.BtcMerkleRoot, oracleData.BtcBlockHeader.MerkleRoot)
+	}
+
+	if voteExt.EthTxHeight != oracleData.EthTxHeight {
+		return fmt.Errorf("ethereum tx height mismatch, expected %d, got %d", voteExt.EthTxHeight, oracleData.EthTxHeight)
 	}
 
 	if voteExt.SolanaTxSlot != oracleData.SolanaTxSlot {

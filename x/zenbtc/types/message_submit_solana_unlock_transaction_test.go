@@ -8,21 +8,21 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestMsgSubmitSolanaUnlockTransaction_ValidateBasic(t *testing.T) {
+func TestMsgSubmitUnlockTransaction_ValidateBasic(t *testing.T) {
 	tests := []struct {
 		name string
-		msg  MsgSubmitSolanaUnlockTransaction
+		msg  MsgSubmitUnlockTransaction
 		err  error
 	}{
 		{
 			name: "invalid address",
-			msg: MsgSubmitSolanaUnlockTransaction{
+			msg: MsgSubmitUnlockTransaction{
 				Creator: "invalid_address",
 			},
 			err: sdkerrors.ErrInvalidAddress,
 		}, {
 			name: "valid address",
-			msg: MsgSubmitSolanaUnlockTransaction{
+			msg: MsgSubmitUnlockTransaction{
 				Creator: sample.AccAddress(),
 			},
 		},

@@ -22,8 +22,8 @@ type QueryClient interface {
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
 	// Queries a list of LockTransactions items.
 	LockTransactions(ctx context.Context, in *QueryLockTransactionsRequest, opts ...grpc.CallOption) (*QueryLockTransactionsResponse, error)
-	// Queries a list of ConfirmedSolanaUnlockTransactions items.
-	ConfirmedSolanaUnlockTransactions(ctx context.Context, in *QueryConfirmedSolanaUnlockTransactionsRequest, opts ...grpc.CallOption) (*QueryConfirmedSolanaUnlockTransactionsResponse, error)
+	// Queries a list of ConfirmedUnlockTransactions items.
+	ConfirmedUnlockTransactions(ctx context.Context, in *QueryConfirmedUnlockTransactionsRequest, opts ...grpc.CallOption) (*QueryConfirmedUnlockTransactionsResponse, error)
 }
 
 type queryClient struct {
@@ -52,9 +52,9 @@ func (c *queryClient) LockTransactions(ctx context.Context, in *QueryLockTransac
 	return out, nil
 }
 
-func (c *queryClient) ConfirmedSolanaUnlockTransactions(ctx context.Context, in *QueryConfirmedSolanaUnlockTransactionsRequest, opts ...grpc.CallOption) (*QueryConfirmedSolanaUnlockTransactionsResponse, error) {
-	out := new(QueryConfirmedSolanaUnlockTransactionsResponse)
-	err := c.cc.Invoke(ctx, "/zrchain.zenbtc.Query/ConfirmedSolanaUnlockTransactions", in, out, opts...)
+func (c *queryClient) ConfirmedUnlockTransactions(ctx context.Context, in *QueryConfirmedUnlockTransactionsRequest, opts ...grpc.CallOption) (*QueryConfirmedUnlockTransactionsResponse, error) {
+	out := new(QueryConfirmedUnlockTransactionsResponse)
+	err := c.cc.Invoke(ctx, "/zrchain.zenbtc.Query/ConfirmedUnlockTransactions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,8 +69,8 @@ type QueryServer interface {
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
 	// Queries a list of LockTransactions items.
 	LockTransactions(context.Context, *QueryLockTransactionsRequest) (*QueryLockTransactionsResponse, error)
-	// Queries a list of ConfirmedSolanaUnlockTransactions items.
-	ConfirmedSolanaUnlockTransactions(context.Context, *QueryConfirmedSolanaUnlockTransactionsRequest) (*QueryConfirmedSolanaUnlockTransactionsResponse, error)
+	// Queries a list of ConfirmedUnlockTransactions items.
+	ConfirmedUnlockTransactions(context.Context, *QueryConfirmedUnlockTransactionsRequest) (*QueryConfirmedUnlockTransactionsResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -84,8 +84,8 @@ func (UnimplementedQueryServer) Params(context.Context, *QueryParamsRequest) (*Q
 func (UnimplementedQueryServer) LockTransactions(context.Context, *QueryLockTransactionsRequest) (*QueryLockTransactionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LockTransactions not implemented")
 }
-func (UnimplementedQueryServer) ConfirmedSolanaUnlockTransactions(context.Context, *QueryConfirmedSolanaUnlockTransactionsRequest) (*QueryConfirmedSolanaUnlockTransactionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ConfirmedSolanaUnlockTransactions not implemented")
+func (UnimplementedQueryServer) ConfirmedUnlockTransactions(context.Context, *QueryConfirmedUnlockTransactionsRequest) (*QueryConfirmedUnlockTransactionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConfirmedUnlockTransactions not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -136,20 +136,20 @@ func _Query_LockTransactions_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_ConfirmedSolanaUnlockTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryConfirmedSolanaUnlockTransactionsRequest)
+func _Query_ConfirmedUnlockTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryConfirmedUnlockTransactionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).ConfirmedSolanaUnlockTransactions(ctx, in)
+		return srv.(QueryServer).ConfirmedUnlockTransactions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zrchain.zenbtc.Query/ConfirmedSolanaUnlockTransactions",
+		FullMethod: "/zrchain.zenbtc.Query/ConfirmedUnlockTransactions",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).ConfirmedSolanaUnlockTransactions(ctx, req.(*QueryConfirmedSolanaUnlockTransactionsRequest))
+		return srv.(QueryServer).ConfirmedUnlockTransactions(ctx, req.(*QueryConfirmedUnlockTransactionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -170,8 +170,8 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Query_LockTransactions_Handler,
 		},
 		{
-			MethodName: "ConfirmedSolanaUnlockTransactions",
-			Handler:    _Query_ConfirmedSolanaUnlockTransactions_Handler,
+			MethodName: "ConfirmedUnlockTransactions",
+			Handler:    _Query_ConfirmedUnlockTransactions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -22,8 +22,8 @@ service Query {
     option (google.api.http).get = "/zrchain/v4/zenbtc/lock_transactions";
   }
 
-  // Queries a list of ConfirmedSolanaUnlockTransactions items.
-  rpc ConfirmedSolanaUnlockTransactions(QueryConfirmedSolanaUnlockTransactionsRequest) returns (QueryConfirmedSolanaUnlockTransactionsResponse) {
+  // Queries a list of ConfirmedUnlockTransactions items.
+  rpc ConfirmedUnlockTransactions(QueryConfirmedUnlockTransactionsRequest) returns (QueryConfirmedUnlockTransactionsResponse) {
     option (google.api.http).get = "/zrchain/v4/zenbtc/confirmed_solana_unlock_transactions";
   }
 }
@@ -46,8 +46,10 @@ message QueryLockTransactionsResponse {
   repeated string lock_transactions = 1;
 }
 
-message QueryConfirmedSolanaUnlockTransactionsRequest {}
+message QueryConfirmedUnlockTransactionsRequest {
+  string chain = 1;
+}
 
-message QueryConfirmedSolanaUnlockTransactionsResponse {
+message QueryConfirmedUnlockTransactionsResponse {
   repeated string unlock_transactions = 1;
 }

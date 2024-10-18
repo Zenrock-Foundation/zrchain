@@ -22,7 +22,7 @@ type MsgClient interface {
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
 	VerifyDepositBlockInclusion(ctx context.Context, in *MsgVerifyDepositBlockInclusion, opts ...grpc.CallOption) (*MsgVerifyDepositBlockInclusionResponse, error)
-	SubmitSolanaUnlockTransaction(ctx context.Context, in *MsgSubmitSolanaUnlockTransaction, opts ...grpc.CallOption) (*MsgSubmitSolanaUnlockTransactionResponse, error)
+	SubmitUnlockTransaction(ctx context.Context, in *MsgSubmitUnlockTransaction, opts ...grpc.CallOption) (*MsgSubmitUnlockTransactionResponse, error)
 }
 
 type msgClient struct {
@@ -51,9 +51,9 @@ func (c *msgClient) VerifyDepositBlockInclusion(ctx context.Context, in *MsgVeri
 	return out, nil
 }
 
-func (c *msgClient) SubmitSolanaUnlockTransaction(ctx context.Context, in *MsgSubmitSolanaUnlockTransaction, opts ...grpc.CallOption) (*MsgSubmitSolanaUnlockTransactionResponse, error) {
-	out := new(MsgSubmitSolanaUnlockTransactionResponse)
-	err := c.cc.Invoke(ctx, "/zrchain.zenbtc.Msg/SubmitSolanaUnlockTransaction", in, out, opts...)
+func (c *msgClient) SubmitUnlockTransaction(ctx context.Context, in *MsgSubmitUnlockTransaction, opts ...grpc.CallOption) (*MsgSubmitUnlockTransactionResponse, error) {
+	out := new(MsgSubmitUnlockTransactionResponse)
+	err := c.cc.Invoke(ctx, "/zrchain.zenbtc.Msg/SubmitUnlockTransaction", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +68,7 @@ type MsgServer interface {
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
 	VerifyDepositBlockInclusion(context.Context, *MsgVerifyDepositBlockInclusion) (*MsgVerifyDepositBlockInclusionResponse, error)
-	SubmitSolanaUnlockTransaction(context.Context, *MsgSubmitSolanaUnlockTransaction) (*MsgSubmitSolanaUnlockTransactionResponse, error)
+	SubmitUnlockTransaction(context.Context, *MsgSubmitUnlockTransaction) (*MsgSubmitUnlockTransactionResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -82,8 +82,8 @@ func (UnimplementedMsgServer) UpdateParams(context.Context, *MsgUpdateParams) (*
 func (UnimplementedMsgServer) VerifyDepositBlockInclusion(context.Context, *MsgVerifyDepositBlockInclusion) (*MsgVerifyDepositBlockInclusionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyDepositBlockInclusion not implemented")
 }
-func (UnimplementedMsgServer) SubmitSolanaUnlockTransaction(context.Context, *MsgSubmitSolanaUnlockTransaction) (*MsgSubmitSolanaUnlockTransactionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SubmitSolanaUnlockTransaction not implemented")
+func (UnimplementedMsgServer) SubmitUnlockTransaction(context.Context, *MsgSubmitUnlockTransaction) (*MsgSubmitUnlockTransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitUnlockTransaction not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
 
@@ -134,20 +134,20 @@ func _Msg_VerifyDepositBlockInclusion_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_SubmitSolanaUnlockTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgSubmitSolanaUnlockTransaction)
+func _Msg_SubmitUnlockTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgSubmitUnlockTransaction)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).SubmitSolanaUnlockTransaction(ctx, in)
+		return srv.(MsgServer).SubmitUnlockTransaction(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zrchain.zenbtc.Msg/SubmitSolanaUnlockTransaction",
+		FullMethod: "/zrchain.zenbtc.Msg/SubmitUnlockTransaction",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).SubmitSolanaUnlockTransaction(ctx, req.(*MsgSubmitSolanaUnlockTransaction))
+		return srv.(MsgServer).SubmitUnlockTransaction(ctx, req.(*MsgSubmitUnlockTransaction))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -168,8 +168,8 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Msg_VerifyDepositBlockInclusion_Handler,
 		},
 		{
-			MethodName: "SubmitSolanaUnlockTransaction",
-			Handler:    _Msg_SubmitSolanaUnlockTransaction_Handler,
+			MethodName: "SubmitUnlockTransaction",
+			Handler:    _Msg_SubmitUnlockTransaction_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

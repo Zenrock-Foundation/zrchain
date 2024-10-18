@@ -25,10 +25,10 @@ class QueryStub(object):
                 request_serializer=zrchain_dot_zenbtc_dot_query__pb2.QueryLockTransactionsRequest.SerializeToString,
                 response_deserializer=zrchain_dot_zenbtc_dot_query__pb2.QueryLockTransactionsResponse.FromString,
                 )
-        self.ConfirmedSolanaUnlockTransactions = channel.unary_unary(
-                '/zrchain.zenbtc.Query/ConfirmedSolanaUnlockTransactions',
-                request_serializer=zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedSolanaUnlockTransactionsRequest.SerializeToString,
-                response_deserializer=zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedSolanaUnlockTransactionsResponse.FromString,
+        self.ConfirmedUnlockTransactions = channel.unary_unary(
+                '/zrchain.zenbtc.Query/ConfirmedUnlockTransactions',
+                request_serializer=zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedUnlockTransactionsRequest.SerializeToString,
+                response_deserializer=zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedUnlockTransactionsResponse.FromString,
                 )
 
 
@@ -50,8 +50,8 @@ class QueryServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ConfirmedSolanaUnlockTransactions(self, request, context):
-        """Queries a list of ConfirmedSolanaUnlockTransactions items.
+    def ConfirmedUnlockTransactions(self, request, context):
+        """Queries a list of ConfirmedUnlockTransactions items.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -70,10 +70,10 @@ def add_QueryServicer_to_server(servicer, server):
                     request_deserializer=zrchain_dot_zenbtc_dot_query__pb2.QueryLockTransactionsRequest.FromString,
                     response_serializer=zrchain_dot_zenbtc_dot_query__pb2.QueryLockTransactionsResponse.SerializeToString,
             ),
-            'ConfirmedSolanaUnlockTransactions': grpc.unary_unary_rpc_method_handler(
-                    servicer.ConfirmedSolanaUnlockTransactions,
-                    request_deserializer=zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedSolanaUnlockTransactionsRequest.FromString,
-                    response_serializer=zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedSolanaUnlockTransactionsResponse.SerializeToString,
+            'ConfirmedUnlockTransactions': grpc.unary_unary_rpc_method_handler(
+                    servicer.ConfirmedUnlockTransactions,
+                    request_deserializer=zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedUnlockTransactionsRequest.FromString,
+                    response_serializer=zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedUnlockTransactionsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -121,7 +121,7 @@ class Query(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ConfirmedSolanaUnlockTransactions(request,
+    def ConfirmedUnlockTransactions(request,
             target,
             options=(),
             channel_credentials=None,
@@ -131,8 +131,8 @@ class Query(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/zrchain.zenbtc.Query/ConfirmedSolanaUnlockTransactions',
-            zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedSolanaUnlockTransactionsRequest.SerializeToString,
-            zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedSolanaUnlockTransactionsResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/zrchain.zenbtc.Query/ConfirmedUnlockTransactions',
+            zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedUnlockTransactionsRequest.SerializeToString,
+            zrchain_dot_zenbtc_dot_query__pb2.QueryConfirmedUnlockTransactionsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

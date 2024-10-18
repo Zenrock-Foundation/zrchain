@@ -1,7 +1,7 @@
 {
   "app_name": "zenrockd",
   "app_version": "",
-  "genesis_time": "2024-10-17T21:42:37.358958261Z",
+  "genesis_time": "2024-10-18T00:03:28.225423376Z",
   "chain_id": "zenrock",
   "initial_height": 1,
   "app_hash": null,
@@ -172,7 +172,7 @@
                 "validator_address": "zenvaloper126hek6zagmp3jqf97x7pq7c0j9jqs0ndvcepy6",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "dtbpEkwwFYHuclU9mmG22oox/DhNNkLuKcqGIhvxV3w="
+                  "key": "5gVTIrxqBc/rfMHgr7hUpBICyiBRTv3+NHI1YtWlhpE="
                 },
                 "value": {
                   "denom": "urock",
@@ -180,7 +180,7 @@
                 }
               }
             ],
-            "memo": "cb7407273196fd695477c58dbb226b41a4e89774@192.168.0.161:26656",
+            "memo": "930c849868dfbc95b818cfc9e889bbc30d7980de@192.168.0.161:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -209,7 +209,7 @@
             "tip": null
           },
           "signatures": [
-            "vnUV2FBDRBfgEktpR9iDau4C9vymv8pr4lhjfbkfDGhfBL0kqaTVsgRns0QGawcFlUgtHKH5HKKh28jhepbtrA=="
+            "87YQYUlbwBEGvMFAgxYVUqKsDX8jQd7Ymt7lz436Ii9LN7dU0TZfeYyXW/o66K9oigcyab3YbypB8FeN3A/KBA=="
           ]
         }
       ]

@@ -6,15 +6,15 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
-var _ sdk.Msg = &MsgSubmitSolanaUnlockTransaction{}
+var _ sdk.Msg = &MsgSubmitUnlockTransaction{}
 
-func NewMsgSubmitSolanaUnlockTransaction(creator string) *MsgSubmitSolanaUnlockTransaction {
-	return &MsgSubmitSolanaUnlockTransaction{
+func NewMsgSubmitUnlockTransaction(creator string) *MsgSubmitUnlockTransaction {
+	return &MsgSubmitUnlockTransaction{
 		Creator: creator,
 	}
 }
 
-func (msg *MsgSubmitSolanaUnlockTransaction) ValidateBasic() error {
+func (msg *MsgSubmitUnlockTransaction) ValidateBasic() error {
 	_, err := sdk.AccAddressFromBech32(msg.Creator)
 	if err != nil {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)

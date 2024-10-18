@@ -27,9 +27,9 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgVerifyDepositBlockInclusion int = 100
 
-	opWeightMsgSubmitSolanaUnlockTransaction = "op_weight_msg_submit_solana_unlock_transaction"
+	opWeightMsgSubmitUnlockTransaction = "op_weight_msg_submit_solana_unlock_transaction"
 	// TODO: Determine the simulation weight value
-	defaultWeightMsgSubmitSolanaUnlockTransaction int = 100
+	defaultWeightMsgSubmitUnlockTransaction int = 100
 
 	// this line is used by starport scaffolding # simapp/module/const
 )
@@ -65,15 +65,15 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		zenbtcsimulation.SimulateMsgVerifyDepositBlockInclusion(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
-	var weightMsgSubmitSolanaUnlockTransaction int
-	simState.AppParams.GetOrGenerate(opWeightMsgSubmitSolanaUnlockTransaction, &weightMsgSubmitSolanaUnlockTransaction, nil,
+	var weightMsgSubmitUnlockTransaction int
+	simState.AppParams.GetOrGenerate(opWeightMsgSubmitUnlockTransaction, &weightMsgSubmitUnlockTransaction, nil,
 		func(_ *rand.Rand) {
-			weightMsgSubmitSolanaUnlockTransaction = defaultWeightMsgSubmitSolanaUnlockTransaction
+			weightMsgSubmitUnlockTransaction = defaultWeightMsgSubmitUnlockTransaction
 		},
 	)
 	operations = append(operations, simulation.NewWeightedOperation(
-		weightMsgSubmitSolanaUnlockTransaction,
-		zenbtcsimulation.SimulateMsgSubmitSolanaUnlockTransaction(am.accountKeeper, am.bankKeeper, am.keeper),
+		weightMsgSubmitUnlockTransaction,
+		zenbtcsimulation.SimulateMsgSubmitUnlockTransaction(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation
@@ -93,10 +93,10 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 			},
 		),
 		simulation.NewWeightedProposalMsg(
-			opWeightMsgSubmitSolanaUnlockTransaction,
-			defaultWeightMsgSubmitSolanaUnlockTransaction,
+			opWeightMsgSubmitUnlockTransaction,
+			defaultWeightMsgSubmitUnlockTransaction,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
-				zenbtcsimulation.SimulateMsgSubmitSolanaUnlockTransaction(am.accountKeeper, am.bankKeeper, am.keeper)
+				zenbtcsimulation.SimulateMsgSubmitUnlockTransaction(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),

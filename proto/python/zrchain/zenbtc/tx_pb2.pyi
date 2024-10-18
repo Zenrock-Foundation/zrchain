@@ -46,18 +46,20 @@ class MsgVerifyDepositBlockInclusionResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
 
-class MsgSubmitSolanaUnlockTransaction(_message.Message):
-    __slots__ = ("creator", "tx_signature", "withdrawal_addr", "amount")
+class MsgSubmitUnlockTransaction(_message.Message):
+    __slots__ = ("creator", "chain", "txID", "withdrawalAddr", "amount")
     CREATOR_FIELD_NUMBER: _ClassVar[int]
-    TX_SIGNATURE_FIELD_NUMBER: _ClassVar[int]
-    WITHDRAWAL_ADDR_FIELD_NUMBER: _ClassVar[int]
+    CHAIN_FIELD_NUMBER: _ClassVar[int]
+    TXID_FIELD_NUMBER: _ClassVar[int]
+    WITHDRAWALADDR_FIELD_NUMBER: _ClassVar[int]
     AMOUNT_FIELD_NUMBER: _ClassVar[int]
     creator: str
-    tx_signature: str
-    withdrawal_addr: str
+    chain: str
+    txID: str
+    withdrawalAddr: str
     amount: int
-    def __init__(self, creator: _Optional[str] = ..., tx_signature: _Optional[str] = ..., withdrawal_addr: _Optional[str] = ..., amount: _Optional[int] = ...) -> None: ...
+    def __init__(self, creator: _Optional[str] = ..., chain: _Optional[str] = ..., txID: _Optional[str] = ..., withdrawalAddr: _Optional[str] = ..., amount: _Optional[int] = ...) -> None: ...
 
-class MsgSubmitSolanaUnlockTransactionResponse(_message.Message):
+class MsgSubmitUnlockTransactionResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...

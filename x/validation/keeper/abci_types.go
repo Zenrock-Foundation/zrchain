@@ -33,14 +33,15 @@ type (
 		ROCKUSDPrice       math.LegacyDec
 		ETHUSDPrice        math.LegacyDec
 		AVSDelegationsHash []byte
+		BtcBlockHeight     int64
+		BtcMerkleRoot      string
 		EthBlockHeight     uint64
 		EthBlockHash       common.Hash
 		EthGasPrice        uint64
 		EthGasLimit        uint64
-		BtcBlockHeight     int64
-		BtcMerkleRoot      string
-		SolanaTxSlot       uint64
 		RequestedEthNonce  uint64
+		EthTxHeight        uint64
+		SolanaTxSlot       uint64
 	}
 
 	VEWithVotePower struct {
@@ -53,14 +54,15 @@ type (
 		ETHUSDPrice          math.LegacyDec
 		AVSDelegationsMap    map[string]map[string]*big.Int
 		ValidatorDelegations []ValidatorDelegations
+		BtcBlockHeight       int64
+		BtcBlockHeader       sidecar.BTCBlockHeader
 		EthBlockHeight       uint64
 		EthBlockHash         common.Hash
 		EthGasPrice          uint64
 		EthGasLimit          uint64
-		BtcBlockHeight       int64
-		BtcBlockHeader       sidecar.BTCBlockHeader
-		SolanaTxSlot         uint64
 		RequestedEthNonce    uint64
+		EthTxHeight          uint64
+		SolanaTxSlot         uint64
 		ConsensusData        abci.ExtendedCommitInfo
 	}
 
@@ -75,6 +77,7 @@ type (
 		GetBitcoinBlockHeaderByHeight(ctx context.Context, in *sidecar.BitcoinBlockHeaderByHeightRequest, opts ...grpc.CallOption) (*sidecar.BitcoinBlockHeaderResponse, error)
 		GetLatestBitcoinBlockHeader(ctx context.Context, in *sidecar.LatestBitcoinBlockHeaderRequest, opts ...grpc.CallOption) (*sidecar.BitcoinBlockHeaderResponse, error)
 		GetSolanaTransaction(ctx context.Context, in *sidecar.SolanaTransactionRequest, opts ...grpc.CallOption) (*sidecar.SolanaTransactionResponse, error)
+		GetEthereumTransaction(ctx context.Context, in *sidecar.EthereumTransactionRequest, opts ...grpc.CallOption) (*sidecar.EthereumTransactionResponse, error)
 		GetEthereumNonceAtHeight(ctx context.Context, in *sidecar.EthereumNonceAtHeightRequest, opts ...grpc.CallOption) (*sidecar.EthereumNonceAtHeightResponse, error)
 	}
 )
