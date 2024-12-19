@@ -11,6 +11,7 @@ import (
 	sdkmath "cosmossdk.io/math"
 	"github.com/Zenrock-Foundation/zrchain/v5/app/params"
 	shared "github.com/Zenrock-Foundation/zrchain/v5/shared"
+	idtypes "github.com/Zenrock-Foundation/zrchain/v5/x/identity/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
 	"cosmossdk.io/collections"
@@ -60,6 +61,7 @@ type Keeper struct {
 	bankKeeper         types.BankKeeper
 	identityKeeper     identity.Keeper
 	policyKeeper       policy.Keeper
+	validationKeeper   types.ValidationKeeper
 }
 
 func NewKeeper(
@@ -70,6 +72,7 @@ func NewKeeper(
 	bankKeeper types.BankKeeper,
 	identityKeeper identity.Keeper,
 	policyKeeper policy.Keeper,
+	validationKeeper types.ValidationKeeper,
 ) Keeper {
 	if _, err := sdk.AccAddressFromBech32(authority); err != nil {
 		panic(fmt.Sprintf("invalid authority address: %s", authority))
@@ -78,13 +81,14 @@ func NewKeeper(
 	sb := collections.NewSchemaBuilder(storeService)
 
 	k := Keeper{
-		cdc:            cdc,
-		storeService:   storeService,
-		authority:      authority,
-		logger:         logger,
-		bankKeeper:     bankKeeper,
-		identityKeeper: identityKeeper,
-		policyKeeper:   policyKeeper,
+		cdc:              cdc,
+		storeService:     storeService,
+		authority:        authority,
+		logger:           logger,
+		bankKeeper:       bankKeeper,
+		identityKeeper:   identityKeeper,
+		policyKeeper:     policyKeeper,
+		validationKeeper: validationKeeper,
 
 		ParamStore:                  collections.NewItem(sb, types.ParamsKey, types.ParamsIndex, codec.CollValue[types.Params](cdc)),
 		KeyStore:                    collections.NewMap(sb, types.KeysKey, types.KeysIndex, collections.Uint64Key, codec.CollValue[types.Key](cdc)),
@@ -263,12 +267,14 @@ func (k *Keeper) newKeyRequest(ctx sdk.Context, msg *types.MsgNewKeyRequest) (*t
 		return nil, fmt.Errorf("keyring %s not found", msg.KeyringAddr)
 	}
 
-	if keyring.KeyReqFee > 0 {
+	fee, err := k.KeyFeeInRock(ctx, &keyring)
+
+	if fee > 0 {
 		feeRecipient := keyring.Address
 		if keyring.DelegateFees {
 			feeRecipient = types.KeyringCollectorName
 		}
-		err := k.SplitKeyringFee(ctx, msg.Creator, feeRecipient, keyring.KeyReqFee)
+		err := k.SplitKeyringFee(ctx, msg.Creator, feeRecipient, fee)
 		if err != nil {
 			return nil, err
 		}
@@ -317,29 +323,37 @@ func (k *Keeper) newKeyRequest(ctx sdk.Context, msg *types.MsgNewKeyRequest) (*t
 	}, nil
 }
 
-func (k *Keeper) signatureRequest(ctx sdk.Context, msg *types.MsgNewSignatureRequest) (*types.MsgNewSignatureRequestResponse, error) {
+func (k *Keeper) HandleSignatureRequest(ctx sdk.Context, msg *types.MsgNewSignatureRequest) (*types.MsgNewSignatureRequestResponse, error) {
 	dataForSigning, err := dataForSigning(msg.DataForSigning)
 	if err != nil {
 		return nil, err
 	}
+
+	// Verify the number of key IDs matches the number of data elements
+	if len(dataForSigning) != len(msg.KeyIds) {
+		return nil, fmt.Errorf("number of key IDs (%d) does not match number of data elements (%d)",
+			len(msg.KeyIds), len(dataForSigning))
+	}
+
 	verified, err := VerifyDataForSigning(dataForSigning, msg.VerifySigningData, msg.VerifySigningDataVersion)
 	if verified == types.Verification_Failed {
-		return nil, fmt.Errorf("transaction & hash verfication transaction did not verify")
+		return nil, fmt.Errorf("transaction & hash verification transaction did not verify")
 	}
 	if err != nil {
 		return nil, fmt.Errorf("error whilst verifying transaction & hashes %s", err.Error())
 	}
 
-	id, err := k.processSignatureRequests(ctx, dataForSigning, &types.SignRequest{
+	id, err := k.processSignatureRequests(ctx, dataForSigning, msg.KeyIds, &types.SignRequest{
 		Creator:        msg.Creator,
-		KeyId:          msg.KeyId,
 		DataForSigning: dataForSigning,
+		KeyIds:         msg.KeyIds,
 		Status:         types.SignRequestStatus_SIGN_REQUEST_STATUS_PENDING,
 		CacheId:        msg.CacheId,
 	})
 	if err != nil {
 		return nil, errorsmod.Wrap(err, "processSignatureRequests")
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			types.EventNewSignRequest,
@@ -350,29 +364,37 @@ func (k *Keeper) signatureRequest(ctx sdk.Context, msg *types.MsgNewSignatureReq
 	return &types.MsgNewSignatureRequestResponse{SigReqId: id}, nil
 }
 
-func (k *Keeper) processSignatureRequests(ctx sdk.Context, dataForSigning [][]byte, req *types.SignRequest) (uint64, error) {
-	key, err := k.KeyStore.Get(ctx, req.KeyId)
-	if err != nil {
-		return 0, fmt.Errorf("key %v not found", req.KeyId)
-	}
-	req.KeyType = key.Type
-
-	keyring, err := k.identityKeeper.KeyringStore.Get(ctx, key.KeyringAddr)
-	if err != nil {
-		return 0, fmt.Errorf("keyring %s not found", key.KeyringAddr)
-	}
-
-	if keyring.SigReqFee > 0 {
-		feeRecipient := keyring.Address
-		if keyring.DelegateFees {
-			feeRecipient = types.KeyringCollectorName
-		}
-		err := k.SplitKeyringFee(ctx, req.Creator, feeRecipient, keyring.SigReqFee)
+func (k *Keeper) processSignatureRequests(ctx sdk.Context, dataForSigning [][]byte, keyIds []uint64, req *types.SignRequest) (uint64, error) {
+	// Verify all keys exist and collect keyring fees
+	for _, keyID := range keyIds {
+		key, err := k.KeyStore.Get(ctx, keyID)
 		if err != nil {
-			return 0, err
+			return 0, fmt.Errorf("key %v not found", keyID)
 		}
+
+		keyring, err := k.identityKeeper.KeyringStore.Get(ctx, key.KeyringAddr)
+		if err != nil {
+			return 0, fmt.Errorf("keyring %s not found", key.KeyringAddr)
+		}
+
+		fee, err := k.SignatureFeeInRock(ctx, &keyring)
+
+		// Accumulate fees per keyring
+		if fee > 0 {
+			feeRecipient := keyring.Address
+			if keyring.DelegateFees {
+				feeRecipient = types.KeyringCollectorName
+			}
+			err := k.SplitKeyringFee(ctx, req.Creator, feeRecipient, fee)
+			if err != nil {
+				return 0, err
+			}
+		}
+
+		req.KeyType = key.GetType()
 	}
 
+	// Create parent request
 	parentID, err := k.CreateSignRequest(ctx, req)
 	if err != nil {
 		return 0, err
@@ -380,30 +402,30 @@ func (k *Keeper) processSignatureRequests(ctx sdk.Context, dataForSigning [][]by
 
 	var childIDs []uint64
 
-	for _, data := range dataForSigning {
-		if len(dataForSigning) < 2 {
-			break
+	// Create child requests if there are multiple data elements
+	if len(dataForSigning) > 1 {
+		for i, data := range dataForSigning {
+			childReq := &types.SignRequest{
+				Creator:        req.Creator,
+				KeyIds:         []uint64{keyIds[i]}, // Use keyId corresponding to the data (hash)
+				KeyType:        req.KeyType,
+				DataForSigning: [][]byte{data}, // only first element is used for data + keyId on child req
+				Status:         types.SignRequestStatus_SIGN_REQUEST_STATUS_PENDING,
+				ParentReqId:    parentID,
+				CacheId:        req.CacheId,
+			}
+
+			childID, err := k.CreateSignRequest(ctx, childReq)
+			if err != nil {
+				return 0, err
+			}
+			childIDs = append(childIDs, childID)
 		}
 
-		req := &types.SignRequest{
-			Creator:        req.Creator,
-			KeyId:          req.KeyId,
-			KeyType:        key.Type,
-			DataForSigning: [][]byte{data},
-			Status:         types.SignRequestStatus_SIGN_REQUEST_STATUS_PENDING,
-			ParentReqId:    parentID,
-			CacheId:        req.CacheId,
-		}
-
-		id, err := k.CreateSignRequest(ctx, req)
-		if err != nil {
-			return 0, err
-		}
-		childIDs = append(childIDs, id)
+		// Update parent with child IDs
+		req.ChildReqIds = childIDs
+		k.SignRequestStore.Set(ctx, parentID, *req)
 	}
-
-	req.ChildReqIds = childIDs
-	k.SignRequestStore.Set(ctx, parentID, *req)
 
 	return parentID, nil
 }
@@ -413,9 +435,10 @@ func (k *Keeper) HandleSignTransactionRequest(ctx sdk.Context, msg *types.MsgNew
 	if err != nil {
 		return nil, err
 	}
-	id, err := k.processSignatureRequests(ctx, dataForSigning, &types.SignRequest{
+	keyIDs := []uint64{msg.KeyId}
+	id, err := k.processSignatureRequests(ctx, dataForSigning, keyIDs, &types.SignRequest{
 		Creator:        msg.Creator,
-		KeyId:          msg.KeyId,
+		KeyIds:         keyIDs,
 		DataForSigning: dataForSigning,
 		Status:         types.SignRequestStatus_SIGN_REQUEST_STATUS_PENDING,
 		Metadata:       msg.Metadata,
@@ -465,13 +488,12 @@ func (k *Keeper) SplitKeyringFee(ctx context.Context, from, to string, fee uint6
 	zenrockFee := uint64(math.Round(float64(fee) * (float64(prms.KeyringCommission) / 100.0)))
 	keyringFee := fee - zenrockFee
 
-	err = k.bankKeeper.SendCoinsFromAccountToModule(
+	if err = k.bankKeeper.SendCoinsFromAccountToModule(
 		ctx,
 		sdk.MustAccAddressFromBech32(from),
 		types.KeyringCollectorName,
 		sdk.NewCoins(sdk.NewCoin(params.BondDenom, sdkmath.NewIntFromUint64(zenrockFee))),
-	)
-	if err != nil {
+	); err != nil {
 		return err
 	}
 
@@ -492,4 +514,43 @@ func (k *Keeper) SplitKeyringFee(ctx context.Context, from, to string, fee uint6
 	}
 
 	return err
+}
+
+// key and signature fee priority:
+//  1. usd_amount
+//  2. rock_amount
+//  3. sig_req_fee or key_req_fee
+
+func (k *Keeper) SignatureFeeInRock(ctx sdk.Context, kr *idtypes.Keyring) (uint64, error) {
+	if kr.Fees != nil && kr.Fees.Signature != nil {
+		if kr.Fees.Signature.UsdAmount > 0 {
+			if ap, err := k.validationKeeper.GetAssetPrice("rock"); err == nil {
+				urockPrice := ap.Mul(sdkmath.LegacyNewDec(1000000))
+				sigPrice := sdkmath.LegacyNewDec(int64(kr.Fees.Signature.UsdAmount)).Mul(urockPrice).RoundInt64()
+				return uint64(sigPrice), nil
+			}
+		} else if kr.Fees.Signature.RockAmount > 0 {
+			return kr.Fees.Signature.RockAmount, nil
+		}
+	}
+
+	return 0, nil
+}
+
+func (k *Keeper) KeyFeeInRock(ctx sdk.Context, kr *idtypes.Keyring) (uint64, error) {
+	if kr.Fees != nil && kr.Fees.Key != nil {
+		if kr.Fees.Key.UsdAmount > 0 {
+			if ap, err := k.validationKeeper.GetAssetPrice("rock"); err == nil {
+				urockPrice := ap.Mul(sdkmath.LegacyNewDec(1000000))
+				if urockPrice.GT(sdkmath.LegacyNewDec(0)) {
+					keyPrice := sdkmath.LegacyNewDec(int64(kr.Fees.Key.UsdAmount)).Mul(urockPrice).RoundInt64()
+					return uint64(keyPrice), nil
+				}
+			}
+		} else if kr.Fees.Key.RockAmount > 0 {
+			return kr.Fees.Key.RockAmount, nil
+		}
+	}
+
+	return 0, nil
 }
