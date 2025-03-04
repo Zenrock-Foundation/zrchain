@@ -1,11 +1,10 @@
----
 name: semantic_release
-
 on:
   push:
     branches:
       - main
-
+      - v5.16.x
+      - 5.16.x
 jobs:
   release:
     name: Release
