@@ -117,6 +117,7 @@ func NewRootCmd() *cobra.Command {
 
 			if cmd.Name() == "start" {
 				zrConfig.IsValidator = !cmd.Flags().Changed("non-validator")
+
 				sidecarAddr, err := cmd.Flags().GetString("sidecar-addr")
 				if err != nil {
 					return err

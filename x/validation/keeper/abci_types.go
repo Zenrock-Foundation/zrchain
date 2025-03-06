@@ -151,12 +151,12 @@ func (ve VoteExtension) IsInvalid(logger log.Logger) bool {
 		logger.Error("invalid vote extension: EthGasLimit is 0")
 		invalid = true
 	}
-	if ve.RequestedBtcBlockHeight == 0 {
-		logger.Error("invalid vote extension: RequestedBtcBlockHeight is 0")
+	if ve.LatestBtcBlockHeight == 0 {
+		logger.Error("invalid vote extension: LatestBtcBlockHeight is 0")
 		invalid = true
 	}
-	if len(ve.RequestedBtcHeaderHash) == 0 {
-		logger.Error("invalid vote extension: RequestedBtcHeaderHash is empty")
+	if len(ve.LatestBtcHeaderHash) == 0 {
+		logger.Error("invalid vote extension: LatestBtcHeaderHash is empty")
 		invalid = true
 	}
 	if ve.SolanaLamportsPerSignature == 0 {
@@ -179,10 +179,58 @@ func (ve VoteExtension) IsInvalid(logger log.Logger) bool {
 		logger.Error("invalid vote extension: BTCUSDPrice is nil or zero")
 		invalid = true
 	}
-	// if ve.ETHUSDPrice.IsZero() {
-	// 	logger.Error("invalid vote extension: ETHUSDPrice is zero")
-	// 	invalid = true
-	// }
+	if ve.ETHUSDPrice.IsZero() {
+		logger.Error("invalid vote extension: ETHUSDPrice is zero")
+		invalid = true
+	}
 
 	return invalid
+}
+
+// isEmptyOracleData checks if the oracle data is effectively empty by checking
+// each field individually, properly handling nil/zero price fields.
+func isEmptyOracleData(data OracleData) bool {
+	if len(data.EigenDelegationsMap) > 0 {
+		return false
+	}
+	if len(data.ValidatorDelegations) > 0 {
+		return false
+	}
+	if len(data.EthBurnEvents) > 0 {
+		return false
+	}
+	if len(data.Redemptions) > 0 {
+		return false
+	}
+
+	emptyBtcHeader := sidecar.BTCBlockHeader{}
+	if data.RequestedBtcBlockHeight != 0 || data.RequestedBtcBlockHeader != emptyBtcHeader {
+		return false
+	}
+	if data.LatestBtcBlockHeight != 0 || data.LatestBtcBlockHeader != emptyBtcHeader {
+		return false
+	}
+
+	if data.EthBlockHeight != 0 || data.EthGasLimit != 0 || data.EthBaseFee != 0 || data.EthTipCap != 0 {
+		return false
+	}
+	if data.RequestedStakerNonce != 0 || data.RequestedEthMinterNonce != 0 ||
+		data.RequestedUnstakerNonce != 0 || data.RequestedCompleterNonce != 0 {
+		return false
+	}
+	if data.SolanaLamportsPerSignature != 0 {
+		return false
+	}
+
+	if !(data.ROCKUSDPrice.IsNil() || data.ROCKUSDPrice.Equal(math.LegacyZeroDec())) {
+		return false
+	}
+	if !(data.BTCUSDPrice.IsNil() || data.BTCUSDPrice.Equal(math.LegacyZeroDec())) {
+		return false
+	}
+	if !(data.ETHUSDPrice.IsNil() || data.ETHUSDPrice.Equal(math.LegacyZeroDec())) {
+		return false
+	}
+
+	return true
 }
