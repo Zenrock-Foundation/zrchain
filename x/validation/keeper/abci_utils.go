@@ -563,23 +563,47 @@ func (k *Keeper) bitcoinNetwork(ctx context.Context) string {
 	return "testnet4"
 }
 
-func (k *Keeper) retrieveBitcoinHeader(ctx context.Context) (*sidecar.BitcoinBlockHeaderResponse, error) {
+// BitcoinHeadersResponse combines the latest and requested Bitcoin headers
+type BitcoinHeadersResponse struct {
+	Latest       *sidecar.BitcoinBlockHeaderResponse
+	Requested    *sidecar.BitcoinBlockHeaderResponse
+	HasRequested bool
+}
+
+func (k *Keeper) retrieveBitcoinHeaders(ctx context.Context) (*sidecar.BitcoinBlockHeaderResponse, *sidecar.BitcoinBlockHeaderResponse, error) {
+	// Always get the latest Bitcoin header
+	latest, err := k.sidecarClient.GetLatestBitcoinBlockHeader(ctx, &sidecar.LatestBitcoinBlockHeaderRequest{
+		ChainName: k.bitcoinNetwork(ctx),
+	})
+	if err != nil {
+		return nil, nil, fmt.Errorf("failed to get latest Bitcoin header: %w", err)
+	}
+
+	// Check if there are requested historical headers
 	requestedBitcoinHeaders, err := k.RequestedHistoricalBitcoinHeaders.Get(ctx)
 	if err != nil {
 		if !errors.Is(err, collections.ErrNotFound) {
-			return nil, err
+			return nil, nil, err
 		}
 		requestedBitcoinHeaders = zenbtctypes.RequestedBitcoinHeaders{}
 		if err = k.RequestedHistoricalBitcoinHeaders.Set(ctx, requestedBitcoinHeaders); err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 	}
 
-	if len(requestedBitcoinHeaders.Heights) == 0 {
-		return k.sidecarClient.GetLatestBitcoinBlockHeader(ctx, &sidecar.LatestBitcoinBlockHeaderRequest{ChainName: k.bitcoinNetwork(ctx)})
+	// Get requested historical headers if any
+	if len(requestedBitcoinHeaders.Heights) > 0 {
+		requested, err := k.sidecarClient.GetBitcoinBlockHeaderByHeight(ctx, &sidecar.BitcoinBlockHeaderByHeightRequest{
+			ChainName:   k.bitcoinNetwork(ctx),
+			BlockHeight: requestedBitcoinHeaders.Heights[0],
+		})
+		if err != nil {
+			return nil, nil, fmt.Errorf("failed to get requested Bitcoin header at height %d: %w", requestedBitcoinHeaders.Heights[0], err)
+		}
+		return latest, requested, nil
 	}
 
-	return k.sidecarClient.GetBitcoinBlockHeaderByHeight(ctx, &sidecar.BitcoinBlockHeaderByHeightRequest{ChainName: k.bitcoinNetwork(ctx), BlockHeight: requestedBitcoinHeaders.Heights[0]})
+	return latest, nil, nil
 }
 
 func (k *Keeper) marshalOracleData(req *abci.RequestPrepareProposal, oracleData *OracleData) ([]byte, error) {
@@ -870,7 +894,10 @@ func (k *Keeper) validateOracleData(voteExt VoteExtension, oracleData *OracleDat
 	if err := validateHashField("Ethereum redemptions", voteExt.RedemptionsHash, oracleData.Redemptions); err != nil {
 		return err
 	}
-	if err := validateHashField("Bitcoin header", voteExt.BtcHeaderHash, &oracleData.BtcBlockHeader); err != nil {
+	if err := validateHashField("Latest Bitcoin header", voteExt.LatestBtcHeaderHash, &oracleData.LatestBtcBlockHeader); err != nil {
+		return err
+	}
+	if err := validateHashField("Requested Bitcoin header", voteExt.RequestedBtcHeaderHash, &oracleData.RequestedBtcBlockHeader); err != nil {
 		return err
 	}
 
@@ -887,8 +914,11 @@ func (k *Keeper) validateOracleData(voteExt VoteExtension, oracleData *OracleDat
 		return fmt.Errorf("ethereum tip cap mismatch, expected %d, got %d", voteExt.EthTipCap, oracleData.EthTipCap)
 	}
 
-	if voteExt.BtcBlockHeight != oracleData.BtcBlockHeight {
-		return fmt.Errorf("bitcoin block height mismatch, expected %d, got %d", voteExt.BtcBlockHeight, oracleData.BtcBlockHeight)
+	if voteExt.LatestBtcBlockHeight != oracleData.LatestBtcBlockHeight {
+		return fmt.Errorf("bitcoin block height mismatch, expected %d, got %d", voteExt.LatestBtcBlockHeight, oracleData.LatestBtcBlockHeight)
+	}
+	if voteExt.RequestedBtcBlockHeight != oracleData.RequestedBtcBlockHeight {
+		return fmt.Errorf("bitcoin block height mismatch, expected %d, got %d", voteExt.RequestedBtcBlockHeight, oracleData.RequestedBtcBlockHeight)
 	}
 
 	if voteExt.RequestedStakerNonce != oracleData.RequestedStakerNonce {
