@@ -2,9 +2,9 @@
 
 ![Banner!](/docs/img/banner.png)
 
-[![License: Source Available License](https://img.shields.io/github/license/zenrocklabs/zenrock.svg?style=flat-square)](https://github.com/zenrocklabs/zenrock/blob/main/LICENSE)
+[![License: Source Available License](https://img.shields.io/github/license/Zenrock-Foundation/zrchain.svg?style=flat-square)](https://github.com/Zenrock-Foundation/zrchain/blob/main/LICENSE)
 [![Version](https://img.shields.io/github/tag/Zenrock-Foundation/zenrock.svg?style=flat-square)](https://github.com/Zenrock-Foundation/zrchain/releases/latest)
-![Go](https://img.shields.io/badge/go-1.25-blue.svg)
+![Go](https://img.shields.io/badge/go-1.26-blue.svg)
 [![GitHub Super-Linter](https://img.shields.io/github/actions/workflow/status/Zenrock-Foundation/zrchain/lint.yml?style=flat-square&label=Lint)](https://github.com/marketplace/actions/super-linter)
 [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.com/invite/zenrockfoundation)
 [![Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://x.com/zenrock)
